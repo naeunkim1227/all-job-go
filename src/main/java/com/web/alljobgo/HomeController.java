@@ -39,7 +39,7 @@ public class HomeController {
 	@RequestMapping(value="/main")
 	public void main() {
 	
-		System.out.println("테트트트ㅡ");
+		System.out.println("테트트트ㅡkk");
 	
 	}
 	
