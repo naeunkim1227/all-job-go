@@ -8,6 +8,14 @@
 </head>
 <link rel="stylesheet" href="resources/css/main.css">
 <body>
-<h1>메인페이지~</h1>
+
+<jsp:include page="layout/header.jsp"></jsp:include>
+
+<article>
+122
+</article>
+
+<jsp:include page="layout/footer.jsp"></jsp:include>
+
 </body>
 </html>
