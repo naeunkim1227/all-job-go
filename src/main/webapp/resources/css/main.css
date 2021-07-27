@@ -1,52 +1,92 @@
 @charset "UTF-8";
-@import url('https://fonts.googleapis.com/css2?family=Gowun+Dodum&display=swap');   
 
-* {margin:0;
-   padding:0;
-   height: 100%;
-   font-family: "Gowun Dodum", sans-serif}
+@import
+	url('https://fonts.googleapis.com/css2?family=Gowun+Dodum&display=swap')
+	;
 
-header{border: 1px solid red; 
-	   height: 20%;
-	   clear: both;
-	   display: flex;}
-	   
+* {
+	margin: 0;
+	padding: 0;
+	font-family: "Gowun Dodum", sans-serif
+}
+
+html, body {
+	height: 100%;
+	width: 100%;
+}
+
+header {
+	border: 1px solid red;
+	height: 100%;
+	clear: both;
+	display: flex;
+}
+
 header>div {
 	flex: 1;
-}	   
-	   
-#top{border: 1px solid orange;
-	 width: 60%; height: 40px;
-	 float: right;
-	 margin-right: 10px;
-	 font-weight: bold;
-	 
-	 }	
+}
+
+.main-layout {
+	width:100%;
+	height:100%;
+	display: grid;
+	grid-template-rows: 200px 1fr 100px;
+}
+
+#top {
+	border: 1px solid orange;
+	width: 60%;
+	height: 40px;
+	float: right;
+	margin-right: 10px;
+	font-weight: bold;
+}
+
 #top>li {
 	text-align: center;
 }
 
-#logo{text-align: center;
-	  margin-top: 2%;}
+#logo {
+	text-align: center;
+	margin-top: 2%;
+}
 
-#logo_img{width: 300px;
-		  height: 140px;
-}	    
-	   
-div>ul {list-style: none;
-		display: flex;
-		}
+#logo_img {
+	width: 300px;
+	height: 140px;
+}
 
-div li{float: left;
-	   margin-left: 20px;}
+div>ul {
+	list-style: none;
+	display: flex;
+}
 
+div li {
+	float: left;
+	margin-left: 20px;
+}
 
+article {
+	border: 1px solid green;
+	height: 100%;
+}
+
+footer {
+	border: 1px solid blue;
+	background-color: #233c90;
+	height: 100%;
+}
+
+#footer {
+	color: white;
 	
-		   
-	   
-article{border: 1px solid green;
-		height: 60%;}
-		
-		
-footer{border: 1px solid blue;
-	   height: 20%;}
+}
+
+#footer>#text {
+	text-align: center;
+	margin-top: 50%;
+}
+
+
+
+

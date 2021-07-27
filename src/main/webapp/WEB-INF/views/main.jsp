@@ -9,6 +9,9 @@
 <link rel="stylesheet" href="resources/css/main.css">
 <body>
 
+<div class="main-layout">
+
+
 <jsp:include page="layout/header.jsp"></jsp:include>
 
 <article>
@@ -16,6 +19,6 @@
 </article>
 
 <jsp:include page="layout/footer.jsp"></jsp:include>
-
+</div>
 </body>
 </html>
