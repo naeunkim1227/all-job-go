@@ -36,4 +36,12 @@ public class HomeController {
 		return "home";
 	}
 	
+	@RequestMapping(value="/main")
+	public void main() {
+	
+		System.out.println("테트트트ㅡ");
+	
+	}
+	
+	
 }
