@@ -5,7 +5,7 @@
 	<div></div>
 	<div>
 		<div id="logo">
-			<img id="logo_img" src="resources/img/all_job_go_logo.png" alt="logo"> 
+			<img id="logo_img" src="${pageContext.request.contextPath}/resources/img/all_job_go_logo.png" alt="logo"> 
 		</div>
 	</div>
 		<div>
