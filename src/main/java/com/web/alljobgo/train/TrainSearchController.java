@@ -29,7 +29,8 @@ public class TrainSearchController {
 	
 	@GetMapping(value="/api/hrd")
 	public String getAPIData(Model model, SearchVO searchVO) {
-		model.addAttribute(hrdSearchService.search(searchVO));
+		logger.info("================================"+hrdSearchService.search(searchVO));
+		//model.addAttribute(hrdSearchService.search(searchVO));
 		return "search/result";
 	}
 }
