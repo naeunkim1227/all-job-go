@@ -2,6 +2,8 @@ package com.web.alljobgo.train;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -32,12 +34,9 @@ public class TrainSearchController {
 		return "search/searchTrain";
 	}
 	
-	@GetMapping(value="/api/hrd", produces = MediaType.APPLICATION_XML_VALUE, consumes = MediaType.APPLICATION_XML_VALUE)
+	@GetMapping(value = "/api/hrd", consumes = MediaType.TEXT_XML_VALUE, produces = MediaType.TEXT_XML_VALUE + "; charset=utf8")
 	@ResponseBody
-	public ResponseEntity<String> getAPIData(Model model, SearchVO searchVO) throws JsonProcessingException {
-//		ObjectMapper mapper = new ObjectMapper();
-//		String curBody = mapper.writeValueAsString(hrdSearchService.search(searchVO).getBody());
-		
+	public String getAPIData(Model model, SearchVO searchVO) throws JsonProcessingException {
 		return hrdSearchService.search(searchVO);
 	}
 }

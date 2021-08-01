@@ -26,7 +26,7 @@ public class HrdSearchTotalService implements HrdSearchService {
 	}
 	
 	@Override
-	public ResponseEntity<String> search(SearchVO searchVO) {
+	public String search(SearchVO searchVO) {
 		
 		String title = "&srchTraProcessNm="+searchVO.getSrchTraProcessNm();
 		
@@ -35,7 +35,7 @@ public class HrdSearchTotalService implements HrdSearchService {
 		
 		HttpEntity<Map<String, String>> httpEntity = new HttpEntity<>(headers);
 		
-		return restTemplate.exchange(API_ENDPOINT, HttpMethod.GET, httpEntity, String.class);
+		return restTemplate.exchange(API_ENDPOINT, HttpMethod.GET, httpEntity, String.class).getBody();
 	}
 
 }
