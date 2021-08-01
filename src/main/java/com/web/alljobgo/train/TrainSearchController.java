@@ -32,7 +32,7 @@ public class TrainSearchController {
 		return "search/searchTrain";
 	}
 	
-	@GetMapping(value="/api/hrd", produces = MediaType.APPLICATION_XML_VALUE)
+	@GetMapping(value="/api/hrd", produces = MediaType.APPLICATION_XML_VALUE, consumes = MediaType.APPLICATION_XML_VALUE)
 	@ResponseBody
 	public ResponseEntity<String> getAPIData(Model model, SearchVO searchVO) throws JsonProcessingException {
 //		ObjectMapper mapper = new ObjectMapper();
