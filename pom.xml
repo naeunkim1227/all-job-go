@@ -170,6 +170,13 @@
 			<artifactId>httpclient</artifactId>
 			<version>4.5.10</version>
 		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/org.springframework/spring-webflux -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-webflux</artifactId>
+			<version>5.2.15.RELEASE</version>
+		</dependency>
 	</dependencies>
 
 	<build>
