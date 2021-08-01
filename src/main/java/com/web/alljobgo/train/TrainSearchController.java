@@ -36,7 +36,7 @@ public class TrainSearchController {
 	
 	@GetMapping(value = "/api/hrd", consumes = MediaType.TEXT_XML_VALUE, produces = MediaType.TEXT_XML_VALUE + "; charset=utf8")
 	@ResponseBody
-	public String getAPIData(Model model, SearchVO searchVO) throws JsonProcessingException {
+	public String getAPIData(Model model, SearchVO searchVO) throws Exception {
 		return hrdSearchService.search(searchVO);
 	}
 }

@@ -4,30 +4,43 @@ const searchTitle = document.querySelector(".search__title")
 
 const searchKeywordHandler = (event) => {
 	const title = searchTitle.value;
+	const startDate = 20210401;
+	const endDate = 20210731;
+	const url = `http://localhost:8088/AllJobGo/search/api/hrd?srchTraProcessNm=${title}&srchTraStDt=${startDate}&srchTraEndDt=${endDate}`;
+	
 	const fetchOptions = {
 		method:'GET',
 		headers:{
 			'Content-Type':'text/xml',
 		}
 	}
-	getFetchData(title,fetchOptions)
+	
+	getFetchData(url,fetchOptions)
 	.then(printResult)
 	
-	title = '';
+	//title = '';
 	event.preventDefault();
 }
 
 const printResult = (result) => {
 	const parser = new DOMParser();
     const xml = parser.parseFromString(result, "text/xml");
-	const subTitles = xml.getElementsByTagName("subTitle"); 
-	const child = [...subTitles]
-	
-	child.map(one => console.log(one.innerHTML))
+	const subTitles = xml.getElementsByTagName("subTitle");
+	const addresses = xml.getElementsByTagName("address");
+	 
+	const child = {
+		subTitle: [...subTitles],
+		address:[...addresses]	
+	}
+	console.log(xml)
+	console.log(child);
+	for(let i = 0 ; i < child.address.length; i++){
+		resultContainer.innerHTML += `<div><h3>${child.subTitle[i].innerHTML}</h3><div>${child.address[i].innerHTML}</div></div>`
+	}
 }
 
-const getFetchData = async(title,options) => {
-	return await (await fetch(`http://localhost:8088/AllJobGo/search/api/hrd?srchTraProcessNm=${title}`,options).catch(catchFetchError)).text();
+const getFetchData = async(url,options) => {
+	return await (await fetch(url,options).catch(catchFetchError)).text();
 }
 
 const catchFetchError = (err) => {
