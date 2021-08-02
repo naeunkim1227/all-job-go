@@ -3,10 +3,12 @@ const resultContainer = document.querySelector('#search-result-container');
 const searchTitle = document.querySelector(".search__title")
 
 const searchKeywordHandler = (event) => {
-	const title = searchTitle.value;
+	let title = searchTitle.value;
+
 	const startDate = 20210401;
 	const endDate = 20210731;
 	const url = `http://localhost:8088/AllJobGo/search/api/hrd?srchTraProcessNm=${title}&srchTraStDt=${startDate}&srchTraEndDt=${endDate}`;
+
 	
 	const fetchOptions = {
 		method:'GET',
@@ -18,7 +20,7 @@ const searchKeywordHandler = (event) => {
 	getFetchData(url,fetchOptions)
 	.then(printResult)
 	
-	//title = '';
+	title = '';
 	event.preventDefault();
 }
 
@@ -32,6 +34,7 @@ const printResult = (result) => {
 		subTitle: [...subTitles],
 		address:[...addresses]	
 	}
+	resultContainer.innerHTML = '';
 	console.log(xml)
 	console.log(child);
 	for(let i = 0 ; i < child.address.length; i++){
@@ -40,6 +43,7 @@ const printResult = (result) => {
 }
 
 const getFetchData = async(url,options) => {
+	resultContainer.innerHTML = '로딩중 ...';
 	return await (await fetch(url,options).catch(catchFetchError)).text();
 }
 
