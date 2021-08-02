@@ -1,0 +1,10 @@
+#searchBox-form{
+	display: flex;
+	flex-direction: row;
+	text-align: center;
+	align-items: center;
+}
+.search__title{
+	min-width: 200px;
+	min-height: 30px;
+}
