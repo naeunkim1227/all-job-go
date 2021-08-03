@@ -1,14 +1,22 @@
 const searchForm = document.querySelector('#searchBox-form')
 const resultContainer = document.querySelector('#search-result-container');
 const searchTitle = document.querySelector(".search__title")
+const searchStartDate = document.querySelector(".search__startDate");
+const searchEndDate = document.querySelector(".search__endDate");
 
 const searchKeywordHandler = (event) => {
 	let title = searchTitle.value;
-
-	const startDate = 20210401;
-	const endDate = 20210731;
+	console.log("데이터===>", searchEndDate.value)
+	
+	if(searchStartDate.value === "" || searchEndDate.value === ""){
+		alert("시작, 끝 날짜를 정해주세요!");
+		event.preventDefault();
+		return;
+	}
+	const startDate = searchStartDate.value.replaceAll('-','');
+	const endDate = searchEndDate.value.replaceAll('-','');
+	
 	const url = `http://localhost:8088/AllJobGo/search/api/hrd?srchTraProcessNm=${title}&srchTraStDt=${startDate}&srchTraEndDt=${endDate}`;
-
 	
 	const fetchOptions = {
 		method:'GET',
