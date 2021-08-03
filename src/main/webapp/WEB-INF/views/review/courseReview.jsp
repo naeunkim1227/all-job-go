@@ -14,7 +14,7 @@
 <div>
 	<div class="container">
 	
-		${test1 }
+	${comments }
 	
 	</div>
 
