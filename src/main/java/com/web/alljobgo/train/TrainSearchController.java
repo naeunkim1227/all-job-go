@@ -2,6 +2,7 @@ package com.web.alljobgo.train;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -24,7 +25,7 @@ public class TrainSearchController {
 	private static final Logger logger = LoggerFactory.getLogger(TrainSearchController.class);
 	private final HrdSearchService hrdSearchService;
 	
-	public TrainSearchController(HrdSearchService hrdSearchService) {
+	public TrainSearchController(@Qualifier("searchSubject") HrdSearchService hrdSearchService) {
 		this.hrdSearchService = hrdSearchService;
 	}
 	
