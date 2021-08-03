@@ -13,8 +13,7 @@
 <%@ include file="../layout/header.jsp" %>
 <div>
 	<div class="container">
-	
-	${comments }
+		
 	
 	</div>
 
