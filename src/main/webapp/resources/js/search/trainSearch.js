@@ -6,7 +6,6 @@ const searchEndDate = document.querySelector(".search__endDate");
 
 const searchKeywordHandler = (event) => {
 	let title = searchTitle.value;
-	console.log("데이터===>", searchEndDate.value)
 	
 	if(searchStartDate.value === "" || searchEndDate.value === ""){
 		alert("시작, 끝 날짜를 정해주세요!");
@@ -37,7 +36,12 @@ const printResult = (result) => {
     const xml = parser.parseFromString(result, "text/xml");
 	const subTitles = xml.getElementsByTagName("subTitle");
 	const addresses = xml.getElementsByTagName("address");
-	 
+	
+	if(subTitles.length === 0){
+		resultContainer.innerHTML = '검색 결과가 없습니다.';
+		return;
+	}
+	
 	const child = {
 		subTitle: [...subTitles],
 		address:[...addresses]	
