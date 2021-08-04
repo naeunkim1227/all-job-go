@@ -1,3 +1,7 @@
+a{
+	text-decoration: none;
+}
+
 #searchBox-form{
 	display: flex;
 	flex-direction: row;
