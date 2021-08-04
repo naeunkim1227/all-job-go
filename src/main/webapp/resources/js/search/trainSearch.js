@@ -5,6 +5,7 @@ const resultContainer = document.querySelector('#search-result-container');
 const searchTitle = document.querySelector(".search__title")
 const searchStartDate = document.querySelector(".search__startDate");
 const searchEndDate = document.querySelector(".search__endDate");
+const searchRegion = document.querySelector("#search__region");
 
 const searchKeywordHandler = (event) => {
 	let title = searchTitle.value;
@@ -17,7 +18,7 @@ const searchKeywordHandler = (event) => {
 	const startDate = searchStartDate.value.replaceAll('-','');
 	const endDate = searchEndDate.value.replaceAll('-','');
 	
-	const url = `http://localhost:8088/AllJobGo/search/api/hrd?srchTraProcessNm=${title}&srchTraStDt=${startDate}&srchTraEndDt=${endDate}`;
+	const url = `http://localhost:8088/AllJobGo/search/api/hrd?srchTraProcessNm=${title}&srchTraStDt=${startDate}&srchTraEndDt=${endDate}&srchTraArea1=${searchRegion.value}`;
 	
 	const fetchOptions = {
 		method:'GET',
@@ -61,7 +62,7 @@ const printResult = (result) => {
 		child.icon[i].innerHTML = child.icon[i].innerHTML.insertAfter('src=','https://');
 		resultContainer.innerHTML += 
 		`
-		<div>
+		<div class="result_data">
 			<a href="../review/data?conId=${child.conId[i].innerHTML}">
 				<div>
 					${child.icon[i].innerHTML.replaceStrs({'&lt;':'<', '&gt;':'>'})}
