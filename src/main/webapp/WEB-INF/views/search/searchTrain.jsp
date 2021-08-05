@@ -7,6 +7,7 @@
 <title>훈련 검색</title>
 <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/main.css">
 <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/search.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 </head>
 <body>
 	<article class="main-layout">

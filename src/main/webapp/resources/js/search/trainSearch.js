@@ -15,8 +15,10 @@ const searchKeywordHandler = (event) => {
 		event.preventDefault();
 		return;
 	}
-	const startDate = searchStartDate.value.replaceAll('-','');
-	const endDate = searchEndDate.value.replaceAll('-','');
+	const startDate = searchStartDate.value.getCalendarFormat();
+	const endDate = searchEndDate.value.getCalendarFormat();
+	
+	console.log(navigator.appVersion);
 	
 	const url = `http://localhost:8088/AllJobGo/search/api/hrd?srchTraProcessNm=${title}&srchTraStDt=${startDate}&srchTraEndDt=${endDate}&srchTraArea1=${searchRegion.value}`;
 	
@@ -63,14 +65,19 @@ const printResult = (result) => {
 		resultContainer.innerHTML += 
 		`
 		<div class="result_data">
-			<a href="../review/data?conId=${child.conId[i].innerHTML}">
+			<div>
+				<a href="../review/data?conId=${child.conId[i].innerHTML}">
+					<div>
+						${child.icon[i].innerHTML.replaceStrs({'&lt;':'<', '&gt;':'>'})}
+						<h1 class="subject__Title">${child.Title[i].innerHTML}</h1>
+					</div>
+					<h3>${child.subTitle[i].innerHTML}</h3>
+					<div>${child.address[i].innerHTML}</div>
+				</a>
 				<div>
-					${child.icon[i].innerHTML.replaceStrs({'&lt;':'<', '&gt;':'>'})}
-					<h1 class="subject__Title">${child.Title[i].innerHTML}</h1>
+					<i class="far fa-heart"></i>
 				</div>
-				<h3>${child.subTitle[i].innerHTML}</h3>
-				<div>${child.address[i].innerHTML}</div>
-			</a>
+			</div>
 		</div>`
 	}
 }
