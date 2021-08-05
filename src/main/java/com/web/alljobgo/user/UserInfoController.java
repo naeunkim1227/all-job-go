@@ -14,7 +14,7 @@ public class UserInfoController {
 	
 private static final Logger logger = LoggerFactory.getLogger(TrainSearchController.class);
 	
-	@GetMapping(value = "")
+	@GetMapping(value = "/login")
 	public String getLogin() {
 		logger.info("getLogin");
 		return "member/login";

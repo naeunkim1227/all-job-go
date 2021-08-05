@@ -22,6 +22,7 @@ a{
 .result_data{
 	background-color: rgba(103, 103, 103, 0.4);
 	margin-bottom: 15px;
+	justify-content: space-between;
 }
 
 .result_data:first-child {
