@@ -12,3 +12,13 @@ String.prototype.replaceStrs = function(convertObj){
 	}
 	return retStr;
 }
+
+String.prototype.getCalendarFormat = function(){
+	const appInfo = navigator.appVersion;
+	if(appInfo.indexOf('Win') !== -1){
+		return this.replaceAll('-','');
+	}
+	if(appInfo.indexOf('Mac') !== -1){
+		return this.replaceAll('.','');
+	}
+}

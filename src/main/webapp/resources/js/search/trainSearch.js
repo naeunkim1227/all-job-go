@@ -15,8 +15,10 @@ const searchKeywordHandler = (event) => {
 		event.preventDefault();
 		return;
 	}
-	const startDate = searchStartDate.value.replaceAll('-','');
-	const endDate = searchEndDate.value.replaceAll('-','');
+	const startDate = searchStartDate.value.getCalendarFormat();
+	const endDate = searchEndDate.value.getCalendarFormat();
+	
+	console.log(navigator.appVersion);
 	
 	const url = `http://localhost:8088/AllJobGo/search/api/hrd?srchTraProcessNm=${title}&srchTraStDt=${startDate}&srchTraEndDt=${endDate}&srchTraArea1=${searchRegion.value}`;
 	
