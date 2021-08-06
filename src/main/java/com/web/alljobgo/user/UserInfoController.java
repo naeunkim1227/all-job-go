@@ -4,11 +4,15 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.reactive.result.view.RedirectView;
 
 import com.web.alljobgo.train.TrainSearchController;
+import com.web.alljobgo.user.domain.userVO;
 import com.web.alljobgo.user.service.UserService;
 
 @Controller
@@ -36,11 +40,15 @@ private static final Logger logger = LoggerFactory.getLogger(TrainSearchControll
 	}
 	
 	@PostMapping(value = "/signup")
-	public String postSignUp() throws Exception {
+	public String postSignUp(userVO vo) throws Exception {
 		logger.info("postSignUp 호출");
-		if(!userService.joinUser()) {
-			return "redirect:../main";
-		}
+		logger.info(vo.toString());
+//		logger.info(vo.toString());
+//		if(!userService.joinUser(vo)) {
+//			logger.info("회원가입 성공");
+//			return "redirect:../main";
+//		}
+		logger.info("회원가입 실패");
 		return "redirect:../main";
 	}
 }

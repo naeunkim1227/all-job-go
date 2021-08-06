@@ -79,13 +79,12 @@
 			</div>
 
 			<div>
-				<form role="form" method="post">
+				<form method="post">
 					<input type="text" name="id" id="id" placeholder="이메일">
 					<button>인증메일 전송</button>
-					<br> <input type="password" name="pass" id="pass"
-						placeholder="비밀번호"><br> <input type="password"
-						name="pass1" id="pass1" placeholder="비밀번호 확인"><br> <input
-						type="text" name="name" id="name" placeholder="성명"><br>
+					<input type="password" name="pass" id="pass" placeholder="비밀번호">
+					<input type="password" name="pass1" id="pass1" placeholder="비밀번호 확인">
+					<input type="text" name="name" id="name" placeholder="성명">
 					<input type="text" name="phonenumber" id="phonenumber"
 						placeholder="'-'제외 입력"><br>
 					<!-- 다음 우편번호 api -->
@@ -99,15 +98,24 @@
 
 					<h4>선택 입력정보</h4>
 					희망지역 <select name="fav_Area">
-						<option>서울특별시</option>
-						<option>부산광역시</option>
-						<option>인천광역시</option>
-						<option>대구광역시</option>
-						<option>울산광역시</option>
-						<option>대전광역시</option>
-						<option>광주광역시</option>
-					</select> <br>
-					<br>
+						<option value="11">서울</option>  
+						<option value="26">부산</option>  
+						<option value="27">대구</option>  
+						<option value="28">인천</option>  
+						<option value="29">광주</option>
+						<option value="30">대전</option>  
+						<option value="31">울산</option> 
+						<option value="36">세종</option> 
+						<option value="41">경기</option> 
+						<option value="42">강원</option> 
+						<option value="43">충북</option> 
+						<option value="44">충남</option> 
+						<option value="45">전북</option> 
+						<option value="46">전남</option> 
+						<option value="47">경북</option> 
+						<option value="48">경남</option> 
+						<option value="50">제주</option>
+					</select> <br> <br>
 					<button type="submit">가입하기</button>
 					<button type="reset">취소하기</button>
 				</form>
