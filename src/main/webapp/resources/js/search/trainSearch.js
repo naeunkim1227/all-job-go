@@ -15,10 +15,15 @@ const searchKeywordHandler = (event) => {
 		event.preventDefault();
 		return;
 	}
+	
 	const startDate = searchStartDate.value.getCalendarFormat();
 	const endDate = searchEndDate.value.getCalendarFormat();
-	
-	console.log(navigator.appVersion);
+
+	if(!startDate || !endDate){
+		alert("날짜 형식이 올바르지 않습니다!");
+		event.preventDefault();
+		return;
+	}	
 	
 	const url = `http://localhost:8088/AllJobGo/search/api/hrd?srchTraProcessNm=${title}&srchTraStDt=${startDate}&srchTraEndDt=${endDate}&srchTraArea1=${searchRegion.value}`;
 	
