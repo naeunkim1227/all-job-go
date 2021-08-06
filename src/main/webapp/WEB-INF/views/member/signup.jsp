@@ -79,7 +79,7 @@
 			</div>
 
 			<div>
-				<form action="#" role="form" method="post">
+				<form role="form" method="post">
 					<input type="text" name="id" id="id" placeholder="이메일">
 					<button>인증메일 전송</button>
 					<br> <input type="password" name="pass" id="pass"
