@@ -8,6 +8,7 @@ public class SearchVO {
 	private String srchTraStDt;
 	private String srchTraEndDt;
 	private String srchTraProcessNm;
+	private String srchTraArea1;
 	private String sortCol;
 	private String sort;
 	public String getReturnType() {
@@ -58,17 +59,23 @@ public class SearchVO {
 	public void setSortCol(String sortCol) {
 		this.sortCol = sortCol;
 	}
-	@Override
-	public String toString() {
-		return "SearchVO [returnType=" + returnType + ", outType=" + outType + ", pageNum=" + pageNum + ", pageSize="
-				+ pageSize + ", srchTraStDt=" + srchTraStDt + ", srchTraEndDt=" + srchTraEndDt + ", srchTraProcessNm="
-				+ srchTraProcessNm + ", sortCol=" + sortCol + ", sort=" + sort + "]";
+	public String getSrchTraArea1() {
+		return srchTraArea1;
+	}
+	public void setSrchTraArea1(String srchTraArea1) {
+		this.srchTraArea1 = srchTraArea1;
 	}
 	public String getSort() {
 		return sort;
 	}
 	public void setSort(String sort) {
 		this.sort = sort;
+	}
+	@Override
+	public String toString() {
+		return "SearchVO [returnType=" + returnType + ", outType=" + outType + ", pageNum=" + pageNum + ", pageSize="
+				+ pageSize + ", srchTraStDt=" + srchTraStDt + ", srchTraEndDt=" + srchTraEndDt + ", srchTraProcessNm="
+				+ srchTraProcessNm + ", srchTraArea1=" + srchTraArea1 + ", sortCol=" + sortCol + ", sort=" + sort + "]";
 	}
 	public void insertByQuery(String query){
 		System.out.println("쿼리 -> property");

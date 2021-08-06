@@ -1,3 +1,8 @@
+a{
+	text-decoration: none;
+	color:black;
+}
+
 #searchBox-form{
 	display: flex;
 	flex-direction: row;
@@ -7,4 +12,19 @@
 .search__title{
 	min-width: 200px;
 	min-height: 30px;
+}
+
+#search-result-container{
+	display: flex;
+	flex-direction: column;
+}
+
+.result_data{
+	background-color: rgba(103, 103, 103, 0.4);
+	margin-bottom: 15px;
+	justify-content: space-between;
+}
+
+.result_data:first-child {
+	margin-top: 25px;
 }
