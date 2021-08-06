@@ -1,6 +1,6 @@
 package com.web.alljobgo.calender.domain;
 
-public class CalenderVO {
+public class HrdSearchVO {
 	private String returntype;
 	private String outType;
 	private String srchTrprId;
