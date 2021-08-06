@@ -43,12 +43,11 @@ private static final Logger logger = LoggerFactory.getLogger(TrainSearchControll
 	public String postSignUp(userVO vo) throws Exception {
 		logger.info("postSignUp 호출");
 		logger.info(vo.toString());
-//		logger.info(vo.toString());
-//		if(!userService.joinUser(vo)) {
-//			logger.info("회원가입 성공");
-//			return "redirect:../main";
-//		}
-		logger.info("회원가입 실패");
+		if(!userService.joinUser(vo)) {
+			logger.info("회원가입 실패");
+			return "redirect:../main";
+		}
+		logger.info("회원가입 성공");
 		return "redirect:../main";
 	}
 }

@@ -91,8 +91,8 @@
 					<input type="text" id="zonecode" name="zonecode" placeholder="우편번호"
 						readonly> <input type="button" id="addr_btn" value="주소 찾기"
 						onclick="openAddrPop()"> <br> <input type="text"
-						id="addr" name="addr" placeholder="주소" readonly> <br>
-					<input type="text" id="addr_detail" name="addr_detail"
+						id="addr" name="address" placeholder="주소" readonly> <br>
+					<input type="text" id="address_detail" name="address_detail"
 						placeholder="상세주소"> <br>
 					<br>
 
