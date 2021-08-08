@@ -42,7 +42,7 @@ private static final Logger logger = LoggerFactory.getLogger(TrainSearchControll
 	@PostMapping(value = "/signup")
 	public String postSignUp(userVO vo) throws Exception {
 		logger.info("postSignUp 호출");
-		logger.info(vo.toString());
+		logger.info("userVO 값 => {}",vo.toString());
 		if(!userService.joinUser(vo)) {
 			logger.info("회원가입 실패");
 			return "redirect:../main";

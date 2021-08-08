@@ -123,5 +123,6 @@
 		</main>
 		<%@ include file="../layout/footer.jsp"%>
 	</article>
+	<script type="module" src="${pageContext.request.contextPath }/resources/js/user/checkDuplicateId.js"></script>
 </body>
 </html>
