@@ -30,8 +30,7 @@ public class HrdUserDAO implements UserDAO {
 	}
 
 	@Override
-	public boolean isExistUser() throws Exception {
-		return false;
+	public userVO findByEmail(String Email) throws Exception {
+		return sqlSession.selectOne(namespace + ".findByEmail", Email);
 	}
-
 }

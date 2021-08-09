@@ -80,6 +80,9 @@
 
 			<div>
 				<form method="post">
+					<div>
+						<span id="checkIdResultContainer"></span>
+					</div>
 					<input type="text" name="id" id="id" placeholder="이메일">
 					<button>인증메일 전송</button>
 					<input type="password" name="pass" id="pass" placeholder="비밀번호">
@@ -123,5 +126,6 @@
 		</main>
 		<%@ include file="../layout/footer.jsp"%>
 	</article>
+	<script type="module" src="${pageContext.request.contextPath }/resources/js/user/checkDuplicateId.js"></script>
 </body>
 </html>

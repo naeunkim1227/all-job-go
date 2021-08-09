@@ -25,7 +25,7 @@ const searchKeywordHandler = (event) => {
 		return;
 	}	
 	
-	const url = `http://localhost:8088/AllJobGo/search/api/hrd?srchTraProcessNm=${title}&srchTraStDt=${startDate}&srchTraEndDt=${endDate}&srchTraArea1=${searchRegion.value}`;
+	const url = `http://localhost:8088/AllJobGo/api/hrd?srchTraProcessNm=${title}&srchTraStDt=${startDate}&srchTraEndDt=${endDate}&srchTraArea1=${searchRegion.value}`;
 	
 	const fetchOptions = {
 		method:'GET',

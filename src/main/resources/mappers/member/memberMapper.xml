@@ -7,4 +7,10 @@
   		insert into member_info (id,pass,name,phonenumber,address,fav_Area,fav_Cate)
   		values (#{id},#{pass},#{name},#{phonenumber},concat(ifnull(#{address},''),ifnull(#{address_detail},'')),#{fav_Area},#{fav_Cate})
   	</insert>
+  	
+  	<select id="findByEmail" resultType="com.web.alljobgo.user.domain.userVO">
+  		select *
+  		from member_info
+  		where id=#{id}
+  	</select>
   </mapper>
