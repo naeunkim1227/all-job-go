@@ -80,6 +80,9 @@
 
 			<div>
 				<form method="post">
+					<div>
+						<span id="checkIdResultContainer"></span>
+					</div>
 					<input type="text" name="id" id="id" placeholder="이메일">
 					<button>인증메일 전송</button>
 					<input type="password" name="pass" id="pass" placeholder="비밀번호">

@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
@@ -39,9 +40,11 @@ public class HrdUserService implements UserService {
 	
 	@Override
 	public JSONObject isExistByEmailJson(String Email) throws Exception {
-		Map<String, Boolean> obj = new HashMap<String, Boolean>();
-		obj.put("exist", isExistByEmail(Email));
+		JSONParser parser = new JSONParser();
+		JSONObject getEmail = (JSONObject) parser.parse(Email);
 		
+		Map<String, Boolean> obj = new HashMap<String, Boolean>();
+		obj.put("exist", isExistByEmail((String) getEmail.get("userEmail")));
 		
 		return new JSONObject(obj);
 	}
