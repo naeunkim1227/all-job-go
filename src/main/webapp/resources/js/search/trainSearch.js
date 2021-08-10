@@ -71,7 +71,7 @@ const printResult = (result) => {
 		`
 		<div class="result_data">
 			<div>
-				<a href="../review/data?conId=${child.conId[i].innerHTML}">
+				<a href="../AllJobGo/review/data?conId=${child.conId[i].innerHTML}">
 					<div>
 						${child.icon[i].innerHTML.replaceStrs({'&lt;':'<', '&gt;':'>'})}
 						<h1 class="subject__Title">${child.Title[i].innerHTML}</h1>
