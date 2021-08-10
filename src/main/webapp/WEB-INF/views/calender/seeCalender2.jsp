@@ -99,17 +99,21 @@ document.addEventListener('DOMContentLoaded', function() {
 <div>
 	<div class="container">
 		
-			<table border="1">
+		<c:set var="rvo" value="${favlist}" />
+		<h1>${rvo.scn_list.trprId}</h1>
+		<table border="1">
 			<tr>
-				<td>id</td>
-				<td>선호과정</td>
+				<td>제발</td>
+				<td>부탁</td>
+				<td>합니다</td>
 			</tr>
-			<c:forEach items="${FavoriteVO}" var="item">
 			<tr>
-				<td>${item.id}</td>
-				<td>${item.fav_class}</td>
+				<td></td>
+				<td></td>
+				<td></td>
 			</tr>
-			</c:forEach>
+		
+		
 		</table>
 		<div id='calendar'></div>
 		

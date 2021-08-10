@@ -16,6 +16,10 @@
 
 <article>
 122
+
+
+<a href="./Calender/seeCalender2">캘린더</a>
+
 </article>
 
 <jsp:include page="layout/footer.jsp"></jsp:include>

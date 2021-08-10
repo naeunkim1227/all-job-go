@@ -7,7 +7,7 @@
   
   	
   	<select id="getfavclass" resultType="com.web.alljobgo.calender.domain.FavoriteVO">
-  		select * from fav_class  	
+  		select * from fav_class where id=#{id}
   	</select>
   	
   
