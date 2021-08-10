@@ -7,13 +7,16 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 import com.web.alljobgo.user.domain.userVO;
 import com.web.alljobgo.user.persistance.UserDAO;
 
-@Service("HrduserService")
-public class HrdUserService implements UserService {
+@Service("HrdUserService")
+public class HrdUserService implements UserService, UserDetailsService {
 
 	private static final Logger logger = LoggerFactory.getLogger(HrdUserService.class);
 	private UserDAO userDAO;
@@ -48,4 +51,10 @@ public class HrdUserService implements UserService {
 		
 		return new JSONObject(obj);
 	}
+
+	@Override
+	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+		return null;
+	}
+	
 }
