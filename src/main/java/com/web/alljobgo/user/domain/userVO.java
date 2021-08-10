@@ -1,15 +1,56 @@
 package com.web.alljobgo.user.domain;
 
-public class userVO {
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
+
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
+
+public class userVO implements UserDetails{
+	private static final long serialVersionUID = 8002556700564359298L;
+	
 	private int member_Num;
 	private String id;
 	private String pass;
 	private String name;
+	private String authority;
 	private String phonenumber;
 	private String address;
 	private String address_detail;
 	private int fav_Area;
 	private int fav_Cate;
+	@Override
+	public Collection<? extends GrantedAuthority> getAuthorities() {
+		List<GrantedAuthority> authorities = new ArrayList<GrantedAuthority>();
+		authorities.add(new SimpleGrantedAuthority(authority));
+		return authorities;
+	}
+	@Override
+	public String getPassword() {
+		return this.pass;
+	}
+	@Override
+	public String getUsername() {
+		return this.id;
+	}
+	@Override
+	public boolean isAccountNonExpired() {
+		return false;
+	}
+	@Override
+	public boolean isAccountNonLocked() {
+		return false;
+	}
+	@Override
+	public boolean isCredentialsNonExpired() {
+		return false;
+	}
+	@Override
+	public boolean isEnabled() {
+		return false;
+	}
 	public int getMember_Num() {
 		return member_Num;
 	}
@@ -63,6 +104,12 @@ public class userVO {
 	}
 	public void setFav_Cate(int fav_Cate) {
 		this.fav_Cate = fav_Cate;
+	}
+	public String getAuthority() {
+		return authority;
+	}
+	public void setAuthority(String authority) {
+		this.authority = authority;
 	}
 	@Override
 	public String toString() {

@@ -4,8 +4,8 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
   <mapper namespace="com.web.alljobgo.userMapper">
   	<insert id="signUser">
-  		insert into member_info (id,pass,name,phonenumber,address,fav_Area,fav_Cate)
-  		values (#{id},#{pass},#{name},#{phonenumber},concat(ifnull(#{address},''),ifnull(#{address_detail},'')),#{fav_Area},#{fav_Cate})
+  		insert into member_info (id,pass,name,authority,phonenumber,address,fav_Area,fav_Cate)
+  		values (#{id},#{pass},#{name},'ROLE_USER',#{phonenumber},concat(ifnull(#{address},''),ifnull(#{address_detail},'')),#{fav_Area},#{fav_Cate})
   	</insert>
   	
   	<select id="findByEmail" resultType="com.web.alljobgo.user.domain.userVO">
