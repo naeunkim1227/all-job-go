@@ -1,62 +1,39 @@
 package com.web.alljobgo.calender.domain;
 
-public class HrdSearchVO {
-	private String returntype;
-	private String outType;
-	private String srchTrprId;
-	private String srchTrprDegr;
-	private String srchTraStDt;
-	private String srchTraEndDt;
-	private String srchTraProcessNm;
-	public String getReturntype() {
-		return returntype;
-	}
-	public void setReturntype(String returntype) {
-		this.returntype = returntype;
-	}
-	public String getOutType() {
-		return outType;
-	}
-	public void setOutType(String outType) {
-		this.outType = outType;
-	}
-	public String getSrchTrprId() {
-		return srchTrprId;
-	}
-	public void setSrchTrprId(String srchTrprId) {
-		this.srchTrprId = srchTrprId;
-	}
-	public String getSrchTrprDegr() {
-		return srchTrprDegr;
-	}
-	public void setSrchTrprDegr(String srchTrprDegr) {
-		this.srchTrprDegr = srchTrprDegr;
-	}
-	public String getSrchTraStDt() {
-		return srchTraStDt;
-	}
-	public void setSrchTraStDt(String srchTraStDt) {
-		this.srchTraStDt = srchTraStDt;
-	}
-	public String getSrchTraEndDt() {
-		return srchTraEndDt;
-	}
-	public void setSrchTraEndDt(String srchTraEndDt) {
-		this.srchTraEndDt = srchTraEndDt;
-	}
-	public String getSrchTraProcessNm() {
-		return srchTraProcessNm;
-	}
-	public void setSrchTraProcessNm(String srchTraProcessNm) {
-		this.srchTraProcessNm = srchTraProcessNm;
-	}
-	@Override
-	public String toString() {
-		return "CalenderVO [returntype=" + returntype + ", outType=" + outType + ", srchTrprId=" + srchTrprId
-				+ ", srchTrprDegr=" + srchTrprDegr + ", srchTraStDt=" + srchTraStDt + ", srchTraEndDt=" + srchTraEndDt
-				+ ", srchTraProcessNm=" + srchTraProcessNm + "]";
-	}
+import javax.xml.bind.annotation.XmlRootElement;
 
+
+@XmlRootElement(name="items")
+public class HrdSearchVO {
 	
+	private String trprId;
+	private String trprDegr;
+	private String trEndDt;
+	private String trStaDt;
+	
+	public String getTrprId() {
+		return trprId;
+	}
+	public void setTrprId(String trprId) {
+		this.trprId = trprId;
+	}
+	public String getTrprDegr() {
+		return trprDegr;
+	}
+	public void setTrprDegr(String trprDegr) {
+		this.trprDegr = trprDegr;
+	}
+	public String getTrEndDt() {
+		return trEndDt;
+	}
+	public void setTrEndDt(String trEndDt) {
+		this.trEndDt = trEndDt;
+	}
+	public String getTrStaDt() {
+		return trStaDt;
+	}
+	public void setTrStaDt(String trStaDt) {
+		this.trStaDt = trStaDt;
+	}
 	
 }

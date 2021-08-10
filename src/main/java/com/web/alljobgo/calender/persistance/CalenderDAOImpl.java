@@ -1,6 +1,7 @@
 package com.web.alljobgo.calender.persistance;
 
 import java.util.List;
+import java.util.Map;
 
 import javax.inject.Inject;
 
@@ -26,10 +27,19 @@ public class CalenderDAOImpl implements CalenderDAO{
 	}
 
 	@Override
-	public List<FavoriteVO> getfavclass() throws Exception {
+	public List<FavoriteVO> getfavclass(String id) throws Exception {
 		// TODO Auto-generated method stub
 		System.out.println("DAO : getfavclass");
-		return sqlsession.selectList(namespace + ".getfavclass");
+		System.out.println("DAO : id확인" + id);
+		
+		return sqlsession.selectList(namespace + ".getfavclass", id);
+	}
+
+	@Override
+	public List getapi(List favlist) {
+		System.out.println("List 잘?" + favlist);
+		
+		return null;
 	}
 	
 	

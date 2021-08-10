@@ -19,11 +19,13 @@
 			<tr>
 				<td>id</td>
 				<td>선호과정</td>
+				<td>회차</td>
 			</tr>
-			<c:forEach items="${FavoriteVO}" var="item">
+			<c:forEach items="${FavoriteVO}" var="fvo">
 			<tr>
-				<td>${item.id}</td>
-				<td>${item.fav_class}</td>
+				<td>${fvo.id}</td>
+				<td>${fvo.fav_class}</td>
+				<td>${fvo.fav_classNum}</td>
 			</tr>
 			</c:forEach>
 		</table>
