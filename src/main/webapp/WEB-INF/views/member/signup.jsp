@@ -121,6 +121,7 @@
 					</select> <br> <br>
 					<button type="submit">가입하기</button>
 					<button type="reset">취소하기</button>
+					<input type="hidden" name=${_csrf.parameterName } value="${_csrf.token }">
 				</form>
 			</div>
 		</main>

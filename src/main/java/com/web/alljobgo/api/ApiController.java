@@ -28,7 +28,7 @@ public class ApiController {
 	
 	public ApiController(
 			@Qualifier("searchSubject") HrdSearchService hrdSearchService,
-			@Qualifier("HrduserService") HrdUserService hrdUserService
+			@Qualifier("HrdUserService") HrdUserService hrdUserService
 			) {
 		this.hrdSearchService = hrdSearchService;
 		this.hrdUserService = hrdUserService;
