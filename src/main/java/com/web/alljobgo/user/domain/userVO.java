@@ -49,7 +49,7 @@ public class userVO implements UserDetails{
 	}
 	@Override
 	public boolean isEnabled() {
-		return false;
+		return true;
 	}
 	public int getMember_Num() {
 		return member_Num;

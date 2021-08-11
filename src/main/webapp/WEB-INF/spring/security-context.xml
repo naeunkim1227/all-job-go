@@ -11,18 +11,25 @@
 						http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
 
 <http use-expressions="true">
+	<csrf disabled="true"/>
 	<intercept-url pattern="/user/login" access="hasRole('ANONYMOUS')"/>
+	<intercept-url pattern="/user/signup" access="hasRole('ANONYMOUS')" />
 	<intercept-url pattern="/search" access="permitAll"/>
 	<intercept-url pattern="/**" access="permitAll" />
 	
-	<form-login login-page="/user/login"
+	<form-login 
+	login-page="/user/login"
+	login-processing-url="/user/login"
 	default-target-url="/main"
 	authentication-failure-url="/user/login/error"
 	username-parameter="id"
 	password-parameter="pass"
 	/>
-	<logout logout-url="/user/logout"
+	<logout 
+	logout-url="/user/logout"
 	logout-success-url="/main"
+	invalidate-session="true"
+	delete-cookies="true"
 	/>
 </http>
 
