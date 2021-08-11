@@ -7,8 +7,10 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.web.alljobgo.user.domain.userVO;
@@ -18,15 +20,22 @@ import com.web.alljobgo.user.persistance.UserDAO;
 public class HrdUserService implements UserService {
 
 	private static final Logger logger = LoggerFactory.getLogger(HrdUserService.class);
-	private UserDAO userDAO;
+	private final UserDAO userDAO;
+	private final PasswordEncoder passwordEncoder;
 	
-	public HrdUserService(UserDAO userDAO) {
+	public HrdUserService(
+			UserDAO userDAO,
+			@Qualifier("passwordEncoder") PasswordEncoder passwordEncoder
+			) {
 		this.userDAO = userDAO;
+		this.passwordEncoder = passwordEncoder;
 	}
 	
 	@Override
 	public boolean joinUser(userVO vo) throws Exception {
 		logger.info("hrdUserService ==> joinUser");
+		
+		encodePassword(vo);
 		
 		if(!userDAO.joinUser(vo)) {
 			return false;
@@ -53,7 +62,19 @@ public class HrdUserService implements UserService {
 
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-		
-		return null;
+		try {
+			userVO vo = userDAO.findByEmail(username);
+			if(vo == null) {
+				throw new UsernameNotFoundException(username);
+			}
+			return vo;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		}
+	}
+	
+	private void encodePassword(userVO vo) {
+		vo.setPass(passwordEncoder.encode(vo.getPass())); 
 	}
 }
