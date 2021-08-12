@@ -48,7 +48,7 @@ const printResult = (result) => {
 	const subTitles = xml.getElementsByTagName("subTitle");
 	const addresses = xml.getElementsByTagName("address");
 	const icon = xml.getElementsByTagName('titleIcon');
-	const conId = xml.getElementsByTagName('trainstCstId');
+	const conId = xml.getElementsByTagName('trprId');
 	
 	if(subTitles.length === 0){
 		resultContainer.innerHTML = '검색 결과가 없습니다.';

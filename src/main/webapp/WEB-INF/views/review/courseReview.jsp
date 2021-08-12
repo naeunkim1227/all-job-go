@@ -13,8 +13,10 @@
 <div class="main-layout">
 <%@ include file="../layout/header.jsp" %>
 <div>
+
 	<div class="container">
 	
+
 
 	
 	<table border="1">
@@ -24,7 +26,10 @@
 		
 		<c:forEach var="comt" items="${comments }">
 			<tr>
-				<td>${comt }</td>
+					<td>${comt }</td>
+<%-- 				<c:if test="${empty comt}"> --%>
+<!-- 					<td>수강후기가 없습니다.</td> -->
+<%-- 				</c:if> --%>
 			</tr>
 		</c:forEach>
 	
