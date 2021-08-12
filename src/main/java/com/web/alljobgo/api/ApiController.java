@@ -46,4 +46,10 @@ public class ApiController {
 		logger.info("이메일 중복 체크 => {}",userEmail);
 		return hrdUserService.isExistByEmailJson(userEmail).toJSONString();
 	}
+	
+	@GetMapping(value = "/data/event-mapping/sign")
+	@ResponseBody
+	public String getSignEventMap(){
+		return "";
+	}
 }
