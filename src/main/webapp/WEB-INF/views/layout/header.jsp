@@ -24,6 +24,12 @@
 					<li><a href="${root}/user/logout">로그아웃</a></li>
 				</sec:authorize>
 			</ul>
+			<div>
+				<sec:authorize access="isAuthenticated()">
+					<sec:authentication property="principal.name" var="user_name"/>
+					<span>안녕하세요! ${user_name}님</span>				
+				</sec:authorize>
+			</div>
 		</div>
 	</div>	
 </header>

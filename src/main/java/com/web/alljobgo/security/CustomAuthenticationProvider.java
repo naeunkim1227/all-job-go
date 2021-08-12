@@ -42,7 +42,7 @@ public class CustomAuthenticationProvider implements AuthenticationProvider {
 			throw new BadCredentialsException(loginUsername);
 		}
 		logger.info(new UsernamePasswordAuthenticationToken(loginUsername, loginPassword, vo.getAuthorities()).toString());
-		return new UsernamePasswordAuthenticationToken(loginUsername, loginPassword, vo.getAuthorities());
+		return new UsernamePasswordAuthenticationToken(vo, loginPassword, vo.getAuthorities());
 	}
 
 	@Override
