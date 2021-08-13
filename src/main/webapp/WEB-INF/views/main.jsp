@@ -15,8 +15,6 @@
 <jsp:include page="layout/header.jsp"></jsp:include>
 
 <article>
-122
-
 
 <a href="./calendar/seecalendar">캘린더</a>
 

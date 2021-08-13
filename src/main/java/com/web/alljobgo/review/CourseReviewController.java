@@ -14,6 +14,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.fasterxml.jackson.databind.util.JSONPObject;
@@ -30,17 +32,20 @@ public class CourseReviewController {
 		this.courseReviewService = courseReviewService;
 	}
 	
-	@GetMapping(value = "")
+	@RequestMapping(value = "")
 	public String getReview(Model model) throws Exception {
 		return "review/courseReview";
 	}
 	
-	@GetMapping(value="/data"/*, produces = MediaType.APPLICATION_JSON_VALUE + "; charset=utf8"*/)
+	@RequestMapping(value="/data", method=RequestMethod.GET)
+			/*, produces = MediaType.APPLICATION_JSON_VALUE + "; charset=utf8"*/
 //	@ResponseBody
-	public String getData(Model model, SearchVO searchVO) throws Exception{
+	public String getData(@RequestParam("conId") String conId, Model model) throws Exception{
+		
+		System.out.println("AADFASFASDFSADFSDFASFADFASFADFAFAF"+conId);
 		
 		JSONParser jsonParser = new JSONParser();
-		JSONObject obj = (JSONObject)jsonParser.parse(courseReviewService.review(searchVO));
+		JSONObject obj = (JSONObject)jsonParser.parse(courseReviewService.review(conId));
 		ArrayList<String> comments = new ArrayList<String>();
 		obj.get("epilogueList");
 		

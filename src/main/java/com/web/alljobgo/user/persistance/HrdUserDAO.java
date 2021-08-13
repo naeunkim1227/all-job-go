@@ -28,6 +28,11 @@ public class HrdUserDAO implements UserDAO {
 			return false;
 		}
 	}
+	
+	@Override
+	public boolean joinAdmin(userVO vo) throws Exception {
+		return false;
+	}
 
 	@Override
 	public userVO findByEmail(String Email) throws Exception {
