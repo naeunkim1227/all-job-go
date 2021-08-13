@@ -75,8 +75,9 @@
 					<div>
 						<div>
 							<span id="fav_cate-title">관심분야</span>
+							<span id="fav_cate-title__list_icon">∨</span>
 						</div>
-						<div class="fav_cate-container">
+						<div class="fav_cate-container" style="display: none;">
 							<p><input type="checkbox" value="01" id="fav_cate_01"> <label for="fav_cate_01">사업관리</label> </p> 
 							<p><input type="checkbox" value="02" id="fav_cate_02"> <label for="fav_cate_02">경영/회계/사무</label> </p> 
 							<p><input type="checkbox" value="03" id="fav_cate_03"> <label for="fav_cate_03">금융/보험</label> </p> 

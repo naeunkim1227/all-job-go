@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.web.alljobgo.api.service.MappingService;
 import com.web.alljobgo.train.domain.SearchVO;
 import com.web.alljobgo.train.service.HrdSearchService;
 import com.web.alljobgo.user.service.HrdUserService;
@@ -25,13 +26,16 @@ public class ApiController {
 	
 	private final HrdSearchService hrdSearchService;
 	private final HrdUserService hrdUserService;
+	private final MappingService mappingService;
 	
 	public ApiController(
 			@Qualifier("searchSubject") HrdSearchService hrdSearchService,
-			@Qualifier("HrdUserService") HrdUserService hrdUserService
+			@Qualifier("HrdUserService") HrdUserService hrdUserService,
+			@Qualifier("DataMapperService") MappingService mappingService
 			) {
 		this.hrdSearchService = hrdSearchService;
 		this.hrdUserService = hrdUserService;
+		this.mappingService = mappingService;
 	}
 	
 	@GetMapping(value = "/hrd", consumes = MediaType.TEXT_XML_VALUE, produces = MediaType.TEXT_XML_VALUE + "; charset=utf8")
@@ -47,9 +51,10 @@ public class ApiController {
 		return hrdUserService.isExistByEmailJson(userEmail).toJSONString();
 	}
 	
-	@GetMapping(value = "/data/event-mapping/sign")
+	@GetMapping(value = "/data/event-mapping/sign", produces = MediaType.APPLICATION_JSON_VALUE)
 	@ResponseBody
-	public String getSignEventMap(){
-		return "";
+	public String getSignEventMap() throws Exception{
+		logger.info("signEventMap!");
+		return mappingService.getSignEvent().toJSONString();
 	}
 }
