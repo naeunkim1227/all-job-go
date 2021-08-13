@@ -35,7 +35,7 @@ const checkDuplicate = async () => {
 		},
 		body:JSON.stringify({userEmail:userEmail})
 	}
-	console.log(reqHeader)
+
 	let responseData = await (await fetch(url,reqHeader)).json()
 	if(responseData.exist){
 		return {

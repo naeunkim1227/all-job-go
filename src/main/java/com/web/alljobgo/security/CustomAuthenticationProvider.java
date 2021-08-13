@@ -4,6 +4,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.security.authentication.AuthenticationProvider;
+import org.springframework.security.authentication.BadCredentialsException;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -29,17 +31,18 @@ public class CustomAuthenticationProvider implements AuthenticationProvider {
 	
 	@Override
 	public Authentication authenticate(Authentication authentication) throws AuthenticationException {
-		logger.info(authentication.toString());
+		logger.info("Authentication Provider에서 authentication ==> {}",authentication.toString());
 		String loginUsername = authentication.getPrincipal().toString();
 		String loginPassword = authentication.getCredentials().toString();
 		
 		userVO vo = (userVO) hrdUserService.loadUserByUsername(loginUsername);
 		
-		if(isMatchedPassword(loginPassword, vo.getPassword())) {
-			
+		if(!isMatchedPassword(loginPassword, vo.getPassword())) {
+			logger.info("비밀번호가 다릅니다! ");
+			throw new BadCredentialsException(loginUsername);
 		}
-		
-		return null;
+		logger.info(new UsernamePasswordAuthenticationToken(loginUsername, loginPassword, vo.getAuthorities()).toString());
+		return new UsernamePasswordAuthenticationToken(vo, loginPassword, vo.getAuthorities());
 	}
 
 	@Override

@@ -21,6 +21,7 @@ public class userVO implements UserDetails{
 	private String address_detail;
 	private int fav_Area;
 	private int fav_Cate;
+
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
 		List<GrantedAuthority> authorities = new ArrayList<GrantedAuthority>();
@@ -49,7 +50,7 @@ public class userVO implements UserDetails{
 	}
 	@Override
 	public boolean isEnabled() {
-		return false;
+		return true;
 	}
 	public int getMember_Num() {
 		return member_Num;
