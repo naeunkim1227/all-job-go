@@ -1,4 +1,4 @@
-package com.web.alljobgo.calender.domain;
+package com.web.alljobgo.calendar.domain;
 
 import javax.xml.bind.annotation.XmlRootElement;
 
@@ -10,6 +10,7 @@ public class HrdSearchVO {
 	private String trprDegr;
 	private String trEndDt;
 	private String trStaDt;
+	private String trprNm;
 	
 	public String getTrprId() {
 		return trprId;
@@ -35,5 +36,13 @@ public class HrdSearchVO {
 	public void setTrStaDt(String trStaDt) {
 		this.trStaDt = trStaDt;
 	}
+	public String getTrprNm() {
+		return trprNm;
+	}
+	public void setTrprNm(String trprNm) {
+		this.trprNm = trprNm;
+	}
+	
+	
 	
 }

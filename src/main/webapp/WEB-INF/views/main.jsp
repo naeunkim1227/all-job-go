@@ -18,7 +18,7 @@
 122
 
 
-<a href="./Calender/seeCalender2">캘린더</a>
+<a href="./calendar/seecalendar">캘린더</a>
 
 </article>
 
