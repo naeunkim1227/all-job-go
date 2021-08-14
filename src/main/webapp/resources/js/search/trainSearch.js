@@ -43,6 +43,9 @@ const searchKeywordHandler = (event) => {
 
 const printResult = (result) => {
 	const resultObj = getResult(result);
+	if(resultObj.length === 0){
+		return resultContainer.innerHTML = '검색에 맞는 훈련이 없습니다.';	
+	}
 	resultContainer.innerHTML = '';
 
 	for(let i = 0 ; i < resultObj.length; i++){
@@ -59,13 +62,32 @@ const printResult = (result) => {
 					<h3>${resultObj[i].subTitle}</h3>
 					<div>${resultObj[i].address}</div>
 				</a>
-				<div>
-					<i class="far fa-heart"></i>
-				</div>
 			</div>
 		</div>`
 	}
-	console.log(document.getElementById('curUserID').content);
+	printLikes(document.querySelectorAll('.result_data'));
+}
+
+const printLikes = (elements) => {
+	let div = document.createElement('div');
+	div.className = "wish-container";
+	
+	let icon = document.createElement('i');
+	icon.className = "far fa-heart";
+	
+	div.appendChild(icon);
+	
+	elements.forEach(element => {
+		const tem = div.cloneNode(true)
+		tem.addEventListener('click',(event) => {console.log(event.target)})
+		element.appendChild(tem);
+	})
+}
+
+const wishBtnEvent = (event) => {
+	if(!document.getElementById('curUserID')){
+		
+	}
 }
 
 const getFetchData = async(url,options) => {
@@ -76,7 +98,8 @@ const getFetchData = async(url,options) => {
 const getResult = (domStr) => {
 	const parser = new DOMParser();
     const xml = parser.parseFromString(domStr, "text/xml");
-	const wantTags = ['title',
+	const wantTags = [
+		'title',
 		'subTitle',
 		'address',
 		'titleIcon',
@@ -85,7 +108,7 @@ const getResult = (domStr) => {
 		'trainstCstId' //훈련기관 id
 		] 
 	const results = [...xml.getElementsByTagName('scn_list')].map(item => getTagObject(item.children, wantTags))//nodeName
-	console.log(results)
+	
 	return results;
 }
 
@@ -114,6 +137,5 @@ const getTagContent = (items, target, len) => {
 const catchFetchError = (err) => {
 	console.warn(err);
 }
-
 
 searchForm.addEventListener('submit',searchKeywordHandler)
