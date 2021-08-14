@@ -13,6 +13,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import com.web.alljobgo.object.ResultType;
 import com.web.alljobgo.user.domain.userVO;
 import com.web.alljobgo.user.persistance.UserDAO;
 
@@ -32,15 +33,19 @@ public class HrdUserService implements UserService {
 	}
 	
 	@Override
-	public boolean joinUser(userVO vo) throws Exception {
+	public ResultType joinUser(userVO vo, String passConfirm) throws Exception {
 		logger.info("hrdUserService ==> joinUser");
+		
+		if(!isPassRight(vo.getPass(), passConfirm)) {
+			return new ResultType(false, "비밀번호가 서로 다릅니다!");
+		}
 		
 		encodePassword(vo);
 		
 		if(!userDAO.joinUser(vo)) {
-			return false;
+			return new ResultType(false, "회원가입 실패!");
 		}
-		return true;
+		return new ResultType(true, null);
 	}
 	
 	@Override
@@ -76,5 +81,12 @@ public class HrdUserService implements UserService {
 	
 	private void encodePassword(userVO vo) {
 		vo.setPass(passwordEncoder.encode(vo.getPass())); 
+	}
+	
+	private boolean isPassRight(String pass1, String pass2) {
+		if(!pass1.equals(pass2)) {
+			return false;
+		}
+		return true;
 	}
 }
