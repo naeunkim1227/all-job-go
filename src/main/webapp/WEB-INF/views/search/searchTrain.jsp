@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,6 +9,10 @@
 <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/main.css">
 <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/search.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+<sec:authorize access="isAuthenticated()">
+	<sec:authentication property="principal.id" var="id" />
+	<meta id="curUserID" content="${id}">
+</sec:authorize>
 </head>
 <body>
 	<article class="main-layout">
@@ -42,10 +47,10 @@
 				<button class="search__btn" type="submit">검색</button>
 			</form>
 			<div id="search-result-container" class="search-result__container"></div>
-			<script type="module"
-				src="${pageContext.request.contextPath }/resources/js/search/trainSearch.js"></script>
 		</main>
 		<%@ include file="../layout/footer.jsp"%>
 	</article>
+	<script> let ee = "${user_nameT}" </script>
+	<script type="module" src="${pageContext.request.contextPath }/resources/js/search/trainSearch.js"></script>
 </body>
 </html>
