@@ -6,6 +6,7 @@ const searchTitle = document.querySelector(".search__title")
 const searchStartDate = document.querySelector(".search__startDate");
 const searchEndDate = document.querySelector(".search__endDate");
 const searchRegion = document.querySelector("#search__region");
+const curUser = document.getElementById('curUserID');
 
 const searchKeywordHandler = (event) => {
 	let title = searchTitle.value;
@@ -89,8 +90,9 @@ const wishBtnEvent = (event) => {
 	// fav_classId
 	// fav_classDegr
 	// fav_academyId
-
-	if(!document.getElementById('curUserID')){
+	const nowEle = event.target.querySelector(".fa-heart");
+	console.log(nowEle);
+	if(!curUser){
 		console.log("You must have login!");
 		return;
 	}

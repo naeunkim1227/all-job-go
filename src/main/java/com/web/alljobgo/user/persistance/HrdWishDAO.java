@@ -3,10 +3,12 @@ package com.web.alljobgo.user.persistance;
 import org.apache.ibatis.session.SqlSession;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Repository;
 
 import com.web.alljobgo.object.ResultType;
 import com.web.alljobgo.train.domain.WishVO;
 
+@Repository
 public class HrdWishDAO implements WishDAO {
 
 	private static final Logger logger = LoggerFactory.getLogger(HrdWishDAO.class);
