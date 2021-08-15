@@ -85,6 +85,11 @@ const printLikes = (elements) => {
 }
 
 const wishBtnEvent = (event) => {
+	// id
+	// fav_classId
+	// fav_classDegr
+	// fav_academyId
+
 	if(!document.getElementById('curUserID')){
 		console.log("You must have login!");
 		return;

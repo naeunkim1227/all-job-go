@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.web.alljobgo.api.service.MappingService;
 import com.web.alljobgo.train.domain.SearchVO;
+import com.web.alljobgo.train.domain.WishVO;
 import com.web.alljobgo.train.service.HrdSearchService;
 import com.web.alljobgo.user.service.HrdUserService;
 
@@ -56,5 +57,12 @@ public class ApiController {
 	public String getSignEventMap() throws Exception{
 		logger.info("signEventMap!");
 		return mappingService.getSignEvent().toJSONString();
+	}
+	
+	@PostMapping(value = "/wish", produces = MediaType.APPLICATION_JSON_VALUE)
+	@ResponseBody
+	public String wishInsert(@RequestBody WishVO wishVO) throws Exception {
+		logger.info("찜목록 넣기 => {}", wishVO.toString());
+		return hrdSearchService.insertWish(wishVO).toJSONString();
 	}
 }
