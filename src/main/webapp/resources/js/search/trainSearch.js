@@ -79,15 +79,18 @@ const printLikes = (elements) => {
 	
 	elements.forEach(element => {
 		const tem = div.cloneNode(true)
-		tem.addEventListener('click',(event) => {console.log(event.target)})
+		tem.addEventListener('click',wishBtnEvent)
 		element.appendChild(tem);
 	})
 }
 
 const wishBtnEvent = (event) => {
 	if(!document.getElementById('curUserID')){
-		
+		console.log("You must have login!");
+		return;
 	}
+	console.log("You are logged in User.");
+	return;
 }
 
 const getFetchData = async(url,options) => {
