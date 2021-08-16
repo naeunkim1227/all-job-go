@@ -1,11 +1,14 @@
 package com.web.alljobgo.train.domain;
 
+import java.util.List;
+
 public class WishVO {
 	private int class_Num;
 	private String id;
 	private String fav_classId;
 	private String fav_classDegr;
 	private String fav_academyId;
+	private List<String> classId;
 	
 	public int getClass_Num() {
 		return class_Num;
@@ -37,9 +40,15 @@ public class WishVO {
 	public void setFav_academyId(String fav_academyId) {
 		this.fav_academyId = fav_academyId;
 	}
+	public List<String> getClassId() {
+		return classId;
+	}
+	public void setClassId(List<String> classId) {
+		this.classId = classId;
+	}
 	@Override
 	public String toString() {
 		return "WishVO [class_Num=" + class_Num + ", id=" + id + ", fav_classId=" + fav_classId + ", fav_classDegr="
-				+ fav_classDegr + ", fav_academyId=" + fav_academyId + "]";
+				+ fav_classDegr + ", fav_academyId=" + fav_academyId + ", classId=" + classId + "]";
 	}
 }

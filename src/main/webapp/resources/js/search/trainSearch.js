@@ -42,14 +42,18 @@ const searchKeywordHandler = (event) => {
 	event.preventDefault();
 }
 
-const printResult = (result) => {
+const printResult = async (result) => {
 	const resultObj = getResult(result);
+	const resultTrainIDStack = [];
+	
 	if(resultObj.length === 0){
 		return resultContainer.innerHTML = '검색에 맞는 훈련이 없습니다.';	
 	}
 	resultContainer.innerHTML = '';
 
 	for(let i = 0 ; i < resultObj.length; i++){
+		resultTrainIDStack.push(resultObj[i].trprId);
+		
 		resultObj[i].titleIcon = resultObj[i].titleIcon.insertAfter('src=','https://');
 		resultContainer.innerHTML += 
 		`
@@ -66,10 +70,11 @@ const printResult = (result) => {
 			</div>
 		</div>`
 	}
-	printLikes(document.querySelectorAll('.result_data'));
+	await printLikes(document.querySelectorAll('.result_data'), resultTrainIDStack);
 }
 
-const printLikes = (elements) => {
+const printLikes = async (elements, nowResultsID) => {
+	
 	let div = document.createElement('div');
 	div.className = "wish-container";
 	
@@ -78,17 +83,45 @@ const printLikes = (elements) => {
 	
 	div.appendChild(icon);
 	
+	let userLike
+	if(curUser){
+		userLike = await printUserLike(nowResultsID);
+		console.log(userLike);
+	}
+	
 	elements.forEach(element => {
+		icon.className = curUser && userLike?.hasOwnProperty(element.dataset.trainId) ? 'fas fa-heart' : 'far fa-heart';
 		const tem = div.cloneNode(true)
 		tem.addEventListener('click',wishBtnEvent)
 		element.appendChild(tem);
 	})
 }
 
+const printUserLike = async (nowResultsID) => {
+	if(!curUser){
+		return;
+	}
+	
+	let reqURL = 'http://localhost:8088/AllJobGo/api/wish'
+	
+	for(var i = 0; i < nowResultsID.length; i++){
+		if(i == 0){
+			reqURL += '?'
+		}else{
+			reqURL += '&';
+		}
+		reqURL += `trainId=${nowResultsID[i]}`
+	}
+	
+	const fetchData = await (await fetch(reqURL).catch(catchFetchError)).json(); 
+	return fetchData;
+}
+
 const wishBtnEvent = async(event) => {
 	const target = event.target;
 	const nowEle = target.closest(".fa-heart");
-	
+	const isInsert = nowEle.className === 'far fa-heart' ? true : false;
+
 	if(!curUser){
 		if(confirm("찜을 위해 로그인을 하시겠습니까?")){
 			location.href = "/AllJobGo/user/login";
@@ -102,18 +135,20 @@ const wishBtnEvent = async(event) => {
 		fav_classDegr: resultData.dataset.trainDeg,
 		fav_academyId: resultData.dataset.conId,
 	}
+	const reqURL = "http://localhost:8088/AllJobGo/api/wish"
 	const reqHeader = {
-		method:'POST',
+		method: isInsert ? 'POST' : 'DELETE',
 		headers: {
 			'Content-Type': 'application/json'
-			// 'Content-Type': 'application/x-www-form-urlencoded',
 		},
 		body:JSON.stringify(bodyData)
 	}
 	console.log(reqHeader)
-	const reqURL = "http://localhost:8088/AllJobGo/api/wish"
 	const result = await (await fetch(reqURL,reqHeader).catch(catchFetchError)).json();
 	console.log(result);
+	if(result.ok){
+		nowEle.className = isInsert ? 'fas fa-heart' : 'far fa-heart';
+	}
 	return;
 }
 
@@ -134,7 +169,7 @@ const getResult = (domStr) => {
 		'trprDegr', //훈련과정 회차
 		'trainstCstId' //훈련기관 id
 		] 
-	const results = [...xml.getElementsByTagName('scn_list')].map(item => getTagObject(item.children, wantTags))//nodeName
+	const results = [...xml.getElementsByTagName('scn_list')].map(item => getTagObject(item.children, wantTags))
 	
 	return results;
 }

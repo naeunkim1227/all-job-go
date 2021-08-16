@@ -1,5 +1,7 @@
 package com.web.alljobgo.train.service;
 
+import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.json.simple.JSONObject;
@@ -46,7 +48,6 @@ public class HrdSearchTotalService implements HrdSearchService {
 		totalQuery.append(API_ENDPOINT);
 		totalQuery.append("?authKey=");
 		totalQuery.append(API_KEY);
-		//totalQuery.append(baseParams);
 		searchVO.setReturnType("XML");
 		searchVO.setOutType("1");
 		searchVO.setPageNum("1");
@@ -68,5 +69,36 @@ public class HrdSearchTotalService implements HrdSearchService {
 		logger.info("insertWish! ==> {}", wishVO);
 		ResultType dbResult = wishDAO.insertWish(wishVO);
 		return dbResult.getJsonFormat(); 
+	}
+	
+	@Override
+	public JSONObject getUserWish(List<String> searchWishs, String userID) {
+		logger.info("getUserWish! ==> {}", searchWishs);
+		WishVO vo = new WishVO();
+		vo.setId(userID);
+		vo.setClassId(searchWishs);
+		
+		List<String> daoResult = wishDAO.getUserWishs(vo);
+		if(daoResult == null) {
+			return new JSONObject(); 
+		}
+		JSONObject retObj = getObjectInList(daoResult);
+		logger.info(retObj.toJSONString());
+		return retObj;
+	}
+	
+	@Override
+	public JSONObject deleteWish(WishVO wishVO) throws Exception {
+		ResultType dbResult = wishDAO.deleteWish(wishVO);
+		return dbResult.getJsonFormat();
+	}
+
+	private JSONObject getObjectInList(List<String> list) {
+		Map<String, Boolean> map = new HashMap<String, Boolean>();
+		System.out.println(list);
+		for(int i = 0; i < list.size(); i++) {
+			map.put(list.get(i), true);
+		}
+		return new JSONObject(map);
 	}
 }
