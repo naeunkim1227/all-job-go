@@ -16,6 +16,10 @@
 	padding: 10px;
 }
 
+#acaInfor{
+	font-weight: bold;
+}
+
 table {
 	border-collapse: separate;
   	border-spacing: 10px 20px;
@@ -40,3 +44,5 @@ p {
 	float: left;
 	font-weight: bold;
 }
+
+

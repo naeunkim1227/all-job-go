@@ -5,22 +5,13 @@ import java.util.ArrayList;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
-import org.jsoup.Jsoup;
-import org.jsoup.nodes.Document;
-import org.jsoup.nodes.Element;
-import org.jsoup.select.Elements;
-import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.fasterxml.jackson.databind.util.JSONPObject;
 import com.web.alljobgo.review.service.CourseReviewService;
-import com.web.alljobgo.train.domain.SearchVO;
 
 @Controller
 @RequestMapping(value = "/review")
@@ -42,11 +33,13 @@ public class CourseReviewController {
 //	@ResponseBody
 	public String getData(@RequestParam("conId") String conId, Model model) throws Exception{
 		
-		System.out.println("AADFASFASDFSADFSDFASFADFASFADFAFAF"+conId);
 		
 		JSONParser jsonParser = new JSONParser();
 		JSONObject obj = (JSONObject)jsonParser.parse(courseReviewService.review(conId));
+		
+		
 		ArrayList<String> comments = new ArrayList<String>();
+		
 		obj.get("epilogueList");
 		
 		JSONArray jsonAr = (JSONArray)obj.get("epilogueList");
@@ -58,6 +51,28 @@ public class CourseReviewController {
 		}
 		
 		model.addAttribute("comments", comments);
+		
+		//학원 정보	
+		ArrayList<String> acaInformation = new ArrayList<String>();
+		
+		JSONObject info = (JSONObject)jsonParser.parse(courseReviewService.acainfor(conId));
+		
+		JSONObject jsonInfo1 = (JSONObject)info.get("tracseList");
+		
+		JSONArray jsonInfo2 = (JSONArray)jsonInfo1.get("result");
+		
+		System.out.println("@@@@@@@@@@@@@@@@@@@");
+		System.out.println(jsonInfo2);
+		
+		for(int j=0;j<jsonInfo2.size();j++) {
+			JSONObject objInfo = (JSONObject)jsonInfo2.get(j);
+			
+			acaInformation.add((String)objInfo.get("trainst_nm_str"));
+			acaInformation.add((String)objInfo.get("tracse_nm"));
+			
+		}
+		
+		model.addAttribute("acaInformation",acaInformation);
 		
 		//return comments.toString();
 		return "review/courseReview";

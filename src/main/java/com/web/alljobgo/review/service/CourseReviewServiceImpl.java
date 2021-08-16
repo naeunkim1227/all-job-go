@@ -1,6 +1,5 @@
 package com.web.alljobgo.review.service;
 
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.patch;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -17,7 +16,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
 
-import com.web.alljobgo.train.domain.SearchVO;
 
 @Service
 public class CourseReviewServiceImpl implements CourseReviewService{
@@ -25,6 +23,8 @@ public class CourseReviewServiceImpl implements CourseReviewService{
 	private final String API_REVIEW = "https://www.hrd.go.kr/hrdp/co/pcobo/selectSatisfactionAjax_B.do";
 	private RestTemplate restTemp = new RestTemplate();
 	
+	
+	private final String ACA_INFOR = "https://www.hrd.go.kr/hrdp/ti/ppsgo/trainListByTraceIdTracseTme.do";
 
 	public CourseReviewServiceImpl(RestTemplate restTemplate) {
 		this.restTemp = restTemplate;
@@ -42,13 +42,6 @@ public class CourseReviewServiceImpl implements CourseReviewService{
 		all.append(conId);
 		all.append("&srchTracseTme=1");
 		
-		System.out.println(" "
-				+ "https://www.hrd.go.kr/hrdp/co/pcobo/selectSatisfactionAjax_B.do"
-				+ "?tracseId="
-				+ "AIG20200000294161"
-				+ "&srchTracseTme=1");
-		System.out.println("서비스@@@@@@@@@@@@@");
-		System.out.println(conId);
 		
 		HttpHeaders headers = new HttpHeaders();
 		headers.add("Accept", "application/json");
@@ -57,6 +50,28 @@ public class CourseReviewServiceImpl implements CourseReviewService{
 		HttpEntity<Map<String, String>> httpEntity = new HttpEntity<>(headers);
 		
 		return restTemp.exchange(all.toString(), HttpMethod.GET, httpEntity, String.class).getBody();
+	}
+
+
+	@Override
+	public String acainfor(String conId) throws Exception {
+		
+		StringBuilder infor = new StringBuilder();
+		infor.append(ACA_INFOR);
+		infor.append("?tracseId=");
+		infor.append(conId);
+		infor.append("&tracse_tme=1&tracse_id=");
+		infor.append(conId);
+		infor.append("&tracse_tme=1");
+		
+		
+		HttpHeaders header = new HttpHeaders();
+		header.add("Accept", "application/json");
+		header.add("User-Agent", "Mozilla/5.0");
+		
+		HttpEntity<Map<String, String>> httpEntity = new HttpEntity<>(header);
+		
+		return restTemp.exchange(infor.toString(), HttpMethod.GET, httpEntity, String.class).getBody();
 	}
 
 
