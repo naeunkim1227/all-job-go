@@ -10,17 +10,13 @@
 <title>Insert title here</title>
 </head>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/main.css">
-<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/review.css">
 <body>
 <div class="main-layout">
 <%@ include file="../layout/header.jsp" %>
 <div>
 
 	<div class="container">
-	
 
-
-	
 	<table border="0" >
 		<tr>
 			<td colspan="2" id="tableLine">

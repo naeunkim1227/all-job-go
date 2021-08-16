@@ -7,11 +7,14 @@
 <title>로그인</title>
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/resources/css/main.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/sign.css">
 </head>
 <body>
 	<article class="main-layout">
 		<%@ include file="../layout/header.jsp"%>
-		<main>
+	<main>
+	<div class="container">
+			
 			<h1>로그인</h1>
 
 			<div>
@@ -25,7 +28,8 @@
 			<div>
 				아직 회원이 아니신가요? <a href="./signup">회원가입</a>
 			</div>
-		</main>
+		</div>	
+	</main>		
 		<%@ include file="../layout/footer.jsp"%>
 	</article>
 </body>
