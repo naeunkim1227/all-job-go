@@ -85,18 +85,35 @@ const printLikes = (elements) => {
 	})
 }
 
-const wishBtnEvent = (event) => {
-	// id
-	// fav_classId
-	// fav_classDegr
-	// fav_academyId
-	const nowEle = event.target.querySelector(".fa-heart");
-	console.log(nowEle);
+const wishBtnEvent = async(event) => {
+	const target = event.target;
+	const nowEle = target.closest(".fa-heart");
+	
 	if(!curUser){
-		console.log("You must have login!");
+		if(confirm("찜을 위해 로그인을 하시겠습니까?")){
+			location.href = "/AllJobGo/user/login";
+		}
 		return;
 	}
-	console.log("You are logged in User.");
+	
+	const resultData = nowEle.parentNode.parentNode;
+	const bodyData = {
+		fav_classId: resultData.dataset.trainId,
+		fav_classDegr: resultData.dataset.trainDeg,
+		fav_academyId: resultData.dataset.conId,
+	}
+	const reqHeader = {
+		method:'POST',
+		headers: {
+			'Content-Type': 'application/json'
+			// 'Content-Type': 'application/x-www-form-urlencoded',
+		},
+		body:JSON.stringify(bodyData)
+	}
+	console.log(reqHeader)
+	const reqURL = "http://localhost:8088/AllJobGo/api/wish"
+	const result = await (await fetch(reqURL,reqHeader).catch(catchFetchError)).json();
+	console.log(result);
 	return;
 }
 

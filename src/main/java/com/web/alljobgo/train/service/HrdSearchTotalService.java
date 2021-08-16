@@ -65,8 +65,7 @@ public class HrdSearchTotalService implements HrdSearchService {
 
 	@Override
 	public JSONObject insertWish(WishVO wishVO) throws Exception {
-		logger.info("insertWish!");
-		
+		logger.info("insertWish! ==> {}", wishVO);
 		ResultType dbResult = wishDAO.insertWish(wishVO);
 		return dbResult.getJsonFormat(); 
 	}

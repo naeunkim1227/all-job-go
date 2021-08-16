@@ -22,9 +22,11 @@ public class HrdWishDAO implements WishDAO {
 	@Override
 	public ResultType insertWish(WishVO wishVO) {
 		try {
-			wishVO.setClass_Num(sqlSession.selectOne(namespace + ".getMaxID"));
+			wishVO.setClass_Num((Integer)sqlSession.selectOne(namespace + ".getMaxID") + 1);
+			logger.info(wishVO.toString());
 			sqlSession.insert(namespace + ".insertWish", wishVO);
 		}catch(Exception excep) {
+			excep.printStackTrace();
 			return new ResultType(false, "찜목록 DB 추가 실패!");
 		}
 		return new ResultType(true, "찜목록 DB 추가 성공!");

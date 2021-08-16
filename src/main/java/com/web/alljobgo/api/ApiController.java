@@ -4,6 +4,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.MediaType;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -18,6 +19,7 @@ import com.web.alljobgo.api.service.MappingService;
 import com.web.alljobgo.train.domain.SearchVO;
 import com.web.alljobgo.train.domain.WishVO;
 import com.web.alljobgo.train.service.HrdSearchService;
+import com.web.alljobgo.user.domain.userVO;
 import com.web.alljobgo.user.service.HrdUserService;
 
 @Controller
@@ -59,10 +61,15 @@ public class ApiController {
 		return mappingService.getSignEvent().toJSONString();
 	}
 	
-	@PostMapping(value = "/wish", produces = MediaType.APPLICATION_JSON_VALUE)
+	@PostMapping(value = "/wish", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE + "; charset=utf8")
 	@ResponseBody
-	public String wishInsert(@RequestBody WishVO wishVO) throws Exception {
+	public String wishInsert(
+			@RequestBody WishVO wishVO,
+			Authentication auth
+			) throws Exception {
 		logger.info("찜목록 넣기 => {}", wishVO.toString());
+		userVO userVO = (userVO)auth.getPrincipal();
+		wishVO.setId(userVO.getId());
 		return hrdSearchService.insertWish(wishVO).toJSONString();
 	}
 }
