@@ -59,7 +59,7 @@ const printResult = async (result) => {
 		`
 		<div class="result_data" data-train-id="${resultObj[i].trprId}" data-train-deg="${resultObj[i].trprDegr}" data-con-id="${resultObj[i].trainstCstId}">
 			<div>
-				<a href="../AllJobGo/review/data?conId=${resultObj[i].titleIcon}">
+				<a href="../AllJobGo/review/data?conId=${resultObj[i].trprId}">
 					<div>
 						${resultObj[i].titleIcon.replaceStrs({'&lt;':'<', '&gt;':'>'})}
 						<h1 class="subject__Title">${resultObj[i].title}</h1>
