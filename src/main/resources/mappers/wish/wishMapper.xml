@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  <mapper namespace="com.web.alljobgo.wishMapper">
+  	<select id="getMaxID" resultType="_int">
+  		select MAX(class_Num) 
+  		from fav_class
+  	</select>
+  	<select id="isExist" resultType="_boolean">
+		select IF(COUNT(*) > 0, 1, 0)
+		from fav_class
+		where id=#{id} and fav_classId=#{fav_classId} and fav_classDegr=#{fav_classDegr} and fav_academyId=#{fav_academyId}
+  	</select>
+  	<select id="getUserWish" resultType="string">
+  		select fav_classId
+  		from fav_class
+  		where id=#{id}
+  		and fav_classId in(
+  		<foreach collection="classId" item="item" separator=",">
+  		#{item}
+  		</foreach>
+  		)
+  	</select>
+  	<insert id="insertWish">
+  		insert into fav_class 
+  		(class_Num,id,fav_classId,fav_classDegr,fav_academyId) 
+  		values (#{class_Num},#{id},#{fav_classId},#{fav_classDegr},#{fav_academyId})
+  	</insert>
+  	<delete id="deleteWish">
+  		delete from fav_class
+  		where id=#{id} and fav_classId=#{fav_classId} and fav_classDegr=#{fav_classDegr} and fav_academyId=#{fav_academyId}
+  	</delete>
+  </mapper>

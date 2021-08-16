@@ -7,15 +7,18 @@
 <title>회원가입</title>
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/resources/css/main.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/sign.css">	
 </head>
 <body>
 	<article class="main-layout">
 		<%@ include file="../layout/header.jsp"%>
-		<main>
-			<h1>회원가입</h1>
+	<div class="container">
+	<main>
+		<div class="mainDiv">
+			<h1 id="signup">회원가입</h1>
 
 			<div style="margin-bottom: 50px;">
-				<textarea cols="130" rows="11" readonly>['다잡고' 개인정보 처리방침]
+				<textarea cols="98" rows="8" readonly>['다잡고' 개인정보 처리방침]
 다잡고(AllJobGo, 이하 다잡고)에 방문해주셔서 감사합니다. 저희 다잡고에서
 고객님들의 개인정보를 수집하고 있으며 이는 본사의 가입지침으로, 아래와 같습니다.
 공무원의 직무상 불법행위로 손해를 받은 국민은 법률이 정하는 바에 의하여 국가 또는 공공단체에 정당한 배상을 청구할 수 있다. 이 경우 공무원 자신의 책임은 면제되지 아니한다.
@@ -26,51 +29,73 @@
 				<br> '개인정보처리방침'에 동의하십니까? <input type="radio" name="agreebtn" value="yes">동의합니다. <input type="radio"
 					name="agreebtn" value="no" checked>동의하지 않습니다.<br>
 			</div>
-
-			<div>
+			<section id="userinfor1"></section>
+			<section id="userinfor2">
 				<form method="post">
 					<div>
 						<span id="checkIdResultContainer"></span>
 					</div>
-					<input type="text" name="id" id="id" placeholder="이메일" required>
-					<button>인증메일 전송</button>
-					<input type="password" name="pass" id="pass" placeholder="비밀번호">
-					<input type="password" name="pass1" id="pass1" placeholder="비밀번호 확인">
-					<input type="text" name="name" id="name" placeholder="성명">
-					<input type="text" name="phonenumber" id="phonenumber" placeholder="'-'제외 입력"><br>
+					
+						<label id="signsub">email</label> 
+					<br> 
+						<input type="text" name="id" id="id" placeholder="이메일" required>
+					<button>인증메일 전송</button> <br>
+					
+						<label id="signsub">password </label>
+					<br> 
+						<input type="password" name="pass" id="pass" placeholder="비밀번호"><br>
+						<input type="password" name="pass1" id="pass1" placeholder="비밀번호 확인"><br>
+						
+						<label id="signsub"> name </label>
+					<br> 
+						<input type="text" name="name" id="name" placeholder="성명"><br>
+						
+						<label id="signsub">phone</label> 
+						<br> 
+						<input type="text" name="phonenumber" id="phonenumber" placeholder="'-'제외 입력"><br>
+					
 					<!-- 다음 우편번호 api -->
-					<input type="text" id="zonecode" name="zonecode" placeholder="우편번호" readonly>
-					<input type="button" id="addr_btn" value="주소 찾기">
+					
+						
+						<label id="signsub"> zip code </label>
 					<br>
-					<input type="text" id="address" name="address" placeholder="주소" readonly> 
+						<input type="text" id="zonecode" name="zonecode" placeholder="우편번호" readonly>
+						
+						<input type="button" id="addr_btn" value="주소 찾기">
 					<br>
-					<input type="text" id="address_detail" name="address_detail" placeholder="상세주소"> <br>
+						<input type="text" id="address" name="address" placeholder="주소" readonly> 
 					<br>
-
+						<input type="text" id="address_detail" name="address_detail" placeholder="상세주소"> <br>
+					<br>
+					
 					<h4>선택 입력정보</h4>
+					<br>
+						
 					<div>
-						<div>
+						<div id="wish">
 							<span>희망지역</span>
 						</div> 
-						<select name="fav_Area">
-							<option value="11">서울</option>
-							<option value="26">부산</option>
-							<option value="27">대구</option>
-							<option value="28">인천</option>
-							<option value="29">광주</option>
-							<option value="30">대전</option>
-							<option value="31">울산</option>
-							<option value="36">세종</option>
-							<option value="41">경기</option>
-							<option value="42">강원</option>
-							<option value="43">충북</option>
-							<option value="44">충남</option>
-							<option value="45">전북</option>
-							<option value="46">전남</option>
-							<option value="47">경북</option>
-							<option value="48">경남</option>
-							<option value="50">제주</option>
-						</select>
+						<div id="wish_area">
+							<select name="fav_Area">
+								<option value="11">서울</option>
+								<option value="26">부산</option>
+								<option value="27">대구</option>
+								<option value="28">인천</option>
+								<option value="29">광주</option>
+								<option value="30">대전</option>
+								<option value="31">울산</option>
+								<option value="36">세종</option>
+								<option value="41">경기</option>
+								<option value="42">강원</option>
+								<option value="43">충북</option>
+								<option value="44">충남</option>
+								<option value="45">전북</option>
+								<option value="46">전남</option>
+								<option value="47">경북</option>
+								<option value="48">경남</option>
+								<option value="50">제주</option>
+							</select>
+						</div>
 					</div>
 					<div>
 						<div>
@@ -104,12 +129,16 @@
 							<p><input type="checkbox" name="fav_Cate" value="24" id="fav_cate_24"> <label for="fav_cate_24">농림어업</label> </p> 
 						</div>
 					</div>
+					<br>
 					<button type="submit">가입하기</button>
 					<button type="reset">취소하기</button>
 					<input type="hidden" name=${_csrf.parameterName } value="${_csrf.token }">
 				</form>
+			</section>
+			
 			</div>
 		</main>
+		</div>
 		<%@ include file="../layout/footer.jsp"%>
 	</article>
 	<script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
