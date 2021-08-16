@@ -1,4 +1,4 @@
-package com.web.alljobgo.calender.domain;
+package com.web.alljobgo.calendar.domain;
 
 import java.util.List;
 

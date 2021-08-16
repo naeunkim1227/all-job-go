@@ -1,4 +1,4 @@
-package com.web.alljobgo.calender;
+package com.web.alljobgo.calendar;
 
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.request;
 
@@ -15,52 +15,51 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttribute;
 
-import com.web.alljobgo.calender.domain.HrdSearchVO;
-import com.web.alljobgo.calender.domain.FavoriteVO;
-import com.web.alljobgo.calender.service.CalenderService;
+import com.web.alljobgo.calendar.domain.HrdSearchVO;
+import com.web.alljobgo.calendar.domain.FavoriteVO;
+import com.web.alljobgo.calendar.service.CalendarService;
 import com.web.alljobgo.train.domain.SearchVO;
 
 @Controller
-@RequestMapping("/Calender/*")
-public class CalenderController {
+@RequestMapping("/calendar/*")
+public class CalendarController {
 	
 	@Inject
-	private CalenderService service;
+	private CalendarService service;
 	
 
-	@RequestMapping(value = "/seeCalender",method = RequestMethod.GET)
-	public String seeCalender(Model model,@ModelAttribute("id") String id,HttpSession session) throws Exception{
+	@RequestMapping(value = "/seecalendar3",method = RequestMethod.GET)
+	public String seecalendar(Model model,@ModelAttribute("id") String id,HttpSession session) throws Exception{
 			System.out.println("씨캘 호출");
 			//호출할때...id정보 가져가서....관심과정,학원 가지고 와야함....
-			
 			session.setAttribute(id, "admin");
-			
 			System.out.println(session.getAttribute(id));
-			
 			model.addAttribute("FavoriteVO", service.getfavclass());
 			
-			return "calender/seeCalender";
+			return "calendar/seecalendar3";
 		}
 
 	
-	@RequestMapping(value = "/seeCalender2",method = RequestMethod.GET)
-	public String getAPI(Model model,HttpServletRequest request) throws Exception {
-        
+	@RequestMapping(value = "/seecalendar",method = RequestMethod.GET)
+	public String getAPI(Model model,HttpServletRequest request,@ModelAttribute("hvo") HrdSearchVO hvo) throws Exception {
 		HttpSession session = request.getSession();
 		String id = "admin";
 		session.setAttribute("id", id);
 		
 		System.out.println(session.getAttribute(id));
-		
 		System.out.println("id의 문제?" + id);
 		
-		System.out.println("이겁니다" + service.getapi(id));
-		model.addAttribute("favlist", service.getapi(id));
+		List allfavlist =  service.getapi(id);
+		
+		model.addAttribute("allfavlist", allfavlist);
 		
 		
-		return "calender/seeCalender2";
+		return "calendar/seecalendar";
 	}
 	
+	
+
 }

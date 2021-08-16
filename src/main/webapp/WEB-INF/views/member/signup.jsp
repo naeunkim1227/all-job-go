@@ -32,7 +32,7 @@
 					<div>
 						<span id="checkIdResultContainer"></span>
 					</div>
-					<input type="text" name="id" id="id" placeholder="이메일">
+					<input type="text" name="id" id="id" placeholder="이메일" required>
 					<button>인증메일 전송</button>
 					<input type="password" name="pass" id="pass" placeholder="비밀번호">
 					<input type="password" name="pass1" id="pass1" placeholder="비밀번호 확인">
@@ -78,30 +78,30 @@
 							<span id="fav_cate-title__list_icon">∨</span>
 						</div>
 						<div class="fav_cate-container" style="display: none;">
-							<p><input type="checkbox" value="01" id="fav_cate_01"> <label for="fav_cate_01">사업관리</label> </p> 
-							<p><input type="checkbox" value="02" id="fav_cate_02"> <label for="fav_cate_02">경영/회계/사무</label> </p> 
-							<p><input type="checkbox" value="03" id="fav_cate_03"> <label for="fav_cate_03">금융/보험</label> </p> 
-							<p><input type="checkbox" value="04" id="fav_cate_04"> <label for="fav_cate_04">교육/자연/사회과학</label> </p> 
-							<p><input type="checkbox" value="05" id="fav_cate_05"> <label for="fav_cate_05">법률/경찰/소방/교도/국방</label> </p> 
-							<p><input type="checkbox" value="06" id="fav_cate_06"> <label for="fav_cate_06">보건/의료</label> </p> 
-							<p><input type="checkbox" value="07" id="fav_cate_07"> <label for="fav_cate_07">사회복지/종교</label> </p> 
-							<p><input type="checkbox" value="08" id="fav_cate_08"> <label for="fav_cate_08">문화/예술/디자인/방송</label> </p> 
-							<p><input type="checkbox" value="09" id="fav_cate_09"> <label for="fav_cate_09">운전/운송</label> </p> 
-							<p><input type="checkbox" value="10" id="fav_cate_10"> <label for="fav_cate_10">영업판매</label> </p> 
-							<p><input type="checkbox" value="11" id="fav_cate_11"> <label for="fav_cate_11">경비/청소</label> </p> 
-							<p><input type="checkbox" value="12" id="fav_cate_12"> <label for="fav_cate_12">이용/숙박/여행/오락/스포츠</label> </p> 
-							<p><input type="checkbox" value="13" id="fav_cate_13"> <label for="fav_cate_13">음식서비스</label> </p> 
-							<p><input type="checkbox" value="14" id="fav_cate_14"> <label for="fav_cate_14">건설</label> </p> 
-							<p><input type="checkbox" value="15" id="fav_cate_15"> <label for="fav_cate_15">기계</label> </p> 
-							<p><input type="checkbox" value="16" id="fav_cate_16"> <label for="fav_cate_16">재료</label> </p> 
-							<p><input type="checkbox" value="17" id="fav_cate_17"> <label for="fav_cate_17">화학</label> </p> 
-							<p><input type="checkbox" value="18" id="fav_cate_18"> <label for="fav_cate_18">섬유/의복</label> </p> 
-							<p><input type="checkbox" value="19" id="fav_cate_19"> <label for="fav_cate_19">전기/전자</label> </p> 
-							<p><input type="checkbox" value="20" id="fav_cate_20"> <label for="fav_cate_20">정보통신</label> </p> 
-							<p><input type="checkbox" value="21" id="fav_cate_21"> <label for="fav_cate_21">식품가공</label> </p> 
-							<p><input type="checkbox" value="22" id="fav_cate_22"> <label for="fav_cate_22">인쇄/목재/가구/공예</label> </p> 
-							<p><input type="checkbox" value="23" id="fav_cate_23"> <label for="fav_cate_23">환경/에너지/안전</label> </p> 
-							<p><input type="checkbox" value="24" id="fav_cate_24"> <label for="fav_cate_24">농림어업</label> </p> 
+							<p><input type="checkbox" name="fav_Cate" value="01" id="fav_cate_01"> <label for="fav_cate_01">사업관리</label> </p> 
+							<p><input type="checkbox" name="fav_Cate" value="02" id="fav_cate_02"> <label for="fav_cate_02">경영/회계/사무</label> </p> 
+							<p><input type="checkbox" name="fav_Cate" value="03" id="fav_cate_03"> <label for="fav_cate_03">금융/보험</label> </p> 
+							<p><input type="checkbox" name="fav_Cate" value="04" id="fav_cate_04"> <label for="fav_cate_04">교육/자연/사회과학</label> </p> 
+							<p><input type="checkbox" name="fav_Cate" value="05" id="fav_cate_05"> <label for="fav_cate_05">법률/경찰/소방/교도/국방</label> </p> 
+							<p><input type="checkbox" name="fav_Cate" value="06" id="fav_cate_06"> <label for="fav_cate_06">보건/의료</label> </p> 
+							<p><input type="checkbox" name="fav_Cate" value="07" id="fav_cate_07"> <label for="fav_cate_07">사회복지/종교</label> </p> 
+							<p><input type="checkbox" name="fav_Cate" value="08" id="fav_cate_08"> <label for="fav_cate_08">문화/예술/디자인/방송</label> </p> 
+							<p><input type="checkbox" name="fav_Cate" value="09" id="fav_cate_09"> <label for="fav_cate_09">운전/운송</label> </p> 
+							<p><input type="checkbox" name="fav_Cate" value="10" id="fav_cate_10"> <label for="fav_cate_10">영업판매</label> </p> 
+							<p><input type="checkbox" name="fav_Cate" value="11" id="fav_cate_11"> <label for="fav_cate_11">경비/청소</label> </p> 
+							<p><input type="checkbox" name="fav_Cate" value="12" id="fav_cate_12"> <label for="fav_cate_12">이용/숙박/여행/오락/스포츠</label> </p> 
+							<p><input type="checkbox" name="fav_Cate" value="13" id="fav_cate_13"> <label for="fav_cate_13">음식서비스</label> </p> 
+							<p><input type="checkbox" name="fav_Cate" value="14" id="fav_cate_14"> <label for="fav_cate_14">건설</label> </p> 
+							<p><input type="checkbox" name="fav_Cate" value="15" id="fav_cate_15"> <label for="fav_cate_15">기계</label> </p> 
+							<p><input type="checkbox" name="fav_Cate" value="16" id="fav_cate_16"> <label for="fav_cate_16">재료</label> </p> 
+							<p><input type="checkbox" name="fav_Cate" value="17" id="fav_cate_17"> <label for="fav_cate_17">화학</label> </p> 
+							<p><input type="checkbox" name="fav_Cate" value="18" id="fav_cate_18"> <label for="fav_cate_18">섬유/의복</label> </p> 
+							<p><input type="checkbox" name="fav_Cate" value="19" id="fav_cate_19"> <label for="fav_cate_19">전기/전자</label> </p> 
+							<p><input type="checkbox" name="fav_Cate" value="20" id="fav_cate_20"> <label for="fav_cate_20">정보통신</label> </p> 
+							<p><input type="checkbox" name="fav_Cate" value="21" id="fav_cate_21"> <label for="fav_cate_21">식품가공</label> </p> 
+							<p><input type="checkbox" name="fav_Cate" value="22" id="fav_cate_22"> <label for="fav_cate_22">인쇄/목재/가구/공예</label> </p> 
+							<p><input type="checkbox" name="fav_Cate" value="23" id="fav_cate_23"> <label for="fav_cate_23">환경/에너지/안전</label> </p> 
+							<p><input type="checkbox" name="fav_Cate" value="24" id="fav_cate_24"> <label for="fav_cate_24">농림어업</label> </p> 
 						</div>
 					</div>
 					<button type="submit">가입하기</button>

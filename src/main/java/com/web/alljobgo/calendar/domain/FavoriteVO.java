@@ -1,4 +1,4 @@
-package com.web.alljobgo.calender.domain;
+package com.web.alljobgo.calendar.domain;
 
 public class FavoriteVO {
 	private int class_Num;

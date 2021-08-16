@@ -42,42 +42,22 @@ const searchKeywordHandler = (event) => {
 }
 
 const printResult = (result) => {
-	const parser = new DOMParser();
-    const xml = parser.parseFromString(result, "text/xml");
-    const subjectTitle = xml.getElementsByTagName("title");
-	const subTitles = xml.getElementsByTagName("subTitle");
-	const addresses = xml.getElementsByTagName("address");
-	const icon = xml.getElementsByTagName('titleIcon');
-	const conId = xml.getElementsByTagName('trprId');
-	
-	if(subTitles.length === 0){
-		resultContainer.innerHTML = '검색 결과가 없습니다.';
-		return;
-	}
-	
-	const child = {
-		Title:[...subjectTitle],
-		subTitle: [...subTitles],
-		address:[...addresses],
-		icon:[...icon],
-		conId:[...conId],
-	}
+	const resultObj = getResult(result);
 	resultContainer.innerHTML = '';
-	console.log(xml)
-	console.log(child);
-	for(let i = 0 ; i < child.address.length; i++){
-		child.icon[i].innerHTML = child.icon[i].innerHTML.insertAfter('src=','https://');
+
+	for(let i = 0 ; i < resultObj.length; i++){
+		resultObj[i].titleIcon = resultObj[i].titleIcon.insertAfter('src=','https://');
 		resultContainer.innerHTML += 
 		`
-		<div class="result_data">
+		<div class="result_data" data-train-id="${resultObj[i].trprId}" data-train-deg="${resultObj[i].trprDegr}" data-con-id="${resultObj[i].trainstCstId}">
 			<div>
-				<a href="../AllJobGo/review/data?conId=${child.conId[i].innerHTML}">
+				<a href="../AllJobGo/review/data?conId=${resultObj[i].titleIcon}">
 					<div>
-						${child.icon[i].innerHTML.replaceStrs({'&lt;':'<', '&gt;':'>'})}
-						<h1 class="subject__Title">${child.Title[i].innerHTML}</h1>
+						${resultObj[i].titleIcon.replaceStrs({'&lt;':'<', '&gt;':'>'})}
+						<h1 class="subject__Title">${resultObj[i].title}</h1>
 					</div>
-					<h3>${child.subTitle[i].innerHTML}</h3>
-					<div>${child.address[i].innerHTML}</div>
+					<h3>${resultObj[i].subTitle}</h3>
+					<div>${resultObj[i].address}</div>
 				</a>
 				<div>
 					<i class="far fa-heart"></i>
@@ -85,6 +65,7 @@ const printResult = (result) => {
 			</div>
 		</div>`
 	}
+	console.log(document.getElementById('curUserID').content);
 }
 
 const getFetchData = async(url,options) => {
@@ -92,8 +73,47 @@ const getFetchData = async(url,options) => {
 	return await (await fetch(url,options).catch(catchFetchError)).text();
 }
 
+const getResult = (domStr) => {
+	const parser = new DOMParser();
+    const xml = parser.parseFromString(domStr, "text/xml");
+	const wantTags = ['title',
+		'subTitle',
+		'address',
+		'titleIcon',
+		'trprId', //훈련과정 아이디
+		'trprDegr', //훈련과정 회차
+		'trainstCstId' //훈련기관 id
+		] 
+	const results = [...xml.getElementsByTagName('scn_list')].map(item => getTagObject(item.children, wantTags))//nodeName
+	console.log(results)
+	return results;
+}
+
+const getTagObject = (item, tags) => {
+	let retObj = {};
+	tags.map(tag => retObj[tag] = getTagContent(item, tag, item.length))
+	return retObj;
+}
+
+const getTagContent = (items, target, len) => {
+	let start = 0;
+	let end = len - 1;
+	let mid = 0;
+
+	while(start < end){
+		mid = Math.floor((start + end)/2);
+		if(target <= items[mid].nodeName){
+			end = mid;
+			continue;
+		}
+		start = mid + 1;
+	}
+	return items[end].innerHTML;
+}
+
 const catchFetchError = (err) => {
 	console.warn(err);
 }
+
 
 searchForm.addEventListener('submit',searchKeywordHandler)

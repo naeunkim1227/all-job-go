@@ -3,10 +3,10 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
   
-  <mapper namespace="com.web.alljobgo.mapper.CalenderMapper">
+  <mapper namespace="com.web.alljobgo.mapper.CalendarMapper">
   
   	
-  	<select id="getfavclass" resultType="com.web.alljobgo.calender.domain.FavoriteVO">
+  	<select id="getfavclass" resultType="com.web.alljobgo.calendar.domain.FavoriteVO">
   		select * from fav_class where id=#{id}
   	</select>
   	

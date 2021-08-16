@@ -1,12 +1,12 @@
-package com.web.alljobgo.calender.persistance;
+package com.web.alljobgo.calendar.persistance;
 
 import java.util.List;
 import java.util.Map;
 
-import com.web.alljobgo.calender.domain.HrdSearchVO;
-import com.web.alljobgo.calender.domain.FavoriteVO;
+import com.web.alljobgo.calendar.domain.FavoriteVO;
+import com.web.alljobgo.calendar.domain.HrdSearchVO;
 
-public interface CalenderDAO {
+public interface CalendarDAO {
 
 	public List<HrdSearchVO> listAll() throws Exception;
 	

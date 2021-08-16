@@ -1,4 +1,4 @@
-package com.web.alljobgo.calender.persistance;
+package com.web.alljobgo.calendar.persistance;
 
 import java.util.List;
 import java.util.Map;
@@ -8,17 +8,17 @@ import javax.inject.Inject;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Component;
 
-import com.web.alljobgo.calender.domain.HrdSearchVO;
-import com.web.alljobgo.calender.domain.FavoriteVO;
+import com.web.alljobgo.calendar.domain.FavoriteVO;
+import com.web.alljobgo.calendar.domain.HrdSearchVO;
 
 @Component
-public class CalenderDAOImpl implements CalenderDAO{
+public class CalendarDAOImpl implements CalendarDAO{
 	
 	@Inject 
 	private SqlSession sqlsession;
 	
 	
-	private final static String namespace = "com.web.alljobgo.mapper.CalenderMapper";
+	private final static String namespace = "com.web.alljobgo.mapper.CalendarMapper";
 	
 	@Override
 	public List<HrdSearchVO> listAll() throws Exception {
