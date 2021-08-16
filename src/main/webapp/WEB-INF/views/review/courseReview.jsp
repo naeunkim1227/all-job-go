@@ -28,7 +28,10 @@
 					 alt="headerLogo" id="header_logo">
 					<p>수강후기</p></td>
 		</tr>
-		
+		<tr>
+			<td colspan="2" id="acaInfor">${acaInformation }</td>
+			
+		</tr>
 		<c:choose>
 			<c:when test="${fn:length(comments) eq 0 }">
 				<td><img id="review_img" src="${pageContext.request.contextPath}/resources/img/en.jpg" alt="review"></td> 
