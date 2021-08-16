@@ -1,7 +1,12 @@
 package com.web.alljobgo.train.service;
 
+import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
+import org.json.simple.JSONObject;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
@@ -11,20 +16,30 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.reactive.function.client.WebClient;
 
+import com.web.alljobgo.object.ResultType;
 import com.web.alljobgo.train.domain.SearchVO;
+import com.web.alljobgo.train.domain.WishVO;
 import com.web.alljobgo.train.util.QueryStringBuilder;
+import com.web.alljobgo.user.persistance.WishDAO;
 
 @Service("searchSubject")
 public class HrdSearchTotalService implements HrdSearchService {
+	
+	private static final Logger logger = LoggerFactory.getLogger(HrdSearchTotalService.class);
 	
 	@Value("${HRD_API_KEY}")
 	private String API_KEY;
 	private final String API_ENDPOINT = "https://www.hrd.go.kr/jsp/HRDP/HRDPO00/HRDPOA60/HRDPOA60_1.jsp";
 	private String baseParams = "&returnType=XML&outType=1&pageNum=1&pageSize=20&sort=ASC&sortCol=TOT_FXNUM";
 	private final RestTemplate restTemplate;
+	private final WishDAO wishDAO;
 	
-	public HrdSearchTotalService(RestTemplate restTemplate) {
+	public HrdSearchTotalService(
+			RestTemplate restTemplate,
+			WishDAO wishDAO
+			) {
 		this.restTemplate = restTemplate;
+		this.wishDAO = wishDAO;
 	}
 	
 	@Override
@@ -33,7 +48,6 @@ public class HrdSearchTotalService implements HrdSearchService {
 		totalQuery.append(API_ENDPOINT);
 		totalQuery.append("?authKey=");
 		totalQuery.append(API_KEY);
-		//totalQuery.append(baseParams);
 		searchVO.setReturnType("XML");
 		searchVO.setOutType("1");
 		searchVO.setPageNum("1");
@@ -50,4 +64,41 @@ public class HrdSearchTotalService implements HrdSearchService {
 		return restTemplate.exchange(totalQuery.toString(), HttpMethod.GET, httpEntity, String.class).getBody();
 	}
 
+	@Override
+	public JSONObject insertWish(WishVO wishVO) throws Exception {
+		logger.info("insertWish! ==> {}", wishVO);
+		ResultType dbResult = wishDAO.insertWish(wishVO);
+		return dbResult.getJsonFormat(); 
+	}
+	
+	@Override
+	public JSONObject getUserWish(List<String> searchWishs, String userID) {
+		logger.info("getUserWish! ==> {}", searchWishs);
+		WishVO vo = new WishVO();
+		vo.setId(userID);
+		vo.setClassId(searchWishs);
+		
+		List<String> daoResult = wishDAO.getUserWishs(vo);
+		if(daoResult == null) {
+			return new JSONObject(); 
+		}
+		JSONObject retObj = getObjectInList(daoResult);
+		logger.info(retObj.toJSONString());
+		return retObj;
+	}
+	
+	@Override
+	public JSONObject deleteWish(WishVO wishVO) throws Exception {
+		ResultType dbResult = wishDAO.deleteWish(wishVO);
+		return dbResult.getJsonFormat();
+	}
+
+	private JSONObject getObjectInList(List<String> list) {
+		Map<String, Boolean> map = new HashMap<String, Boolean>();
+		System.out.println(list);
+		for(int i = 0; i < list.size(); i++) {
+			map.put(list.get(i), true);
+		}
+		return new JSONObject(map);
+	}
 }
