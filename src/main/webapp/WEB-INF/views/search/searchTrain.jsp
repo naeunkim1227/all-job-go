@@ -20,7 +20,7 @@
 		<main>
 			<form id="searchBox-form">
 				<input class="searchInput search__startDate" type="date" />
-				~
+				<img src="https://img.icons8.com/emoji/48/000000/wavy-dash-emoji.png"/>
 				<input class="searchInput search__endDate" type="date" />
 				<select id="search__region">
 					<option value="">전체</option>

@@ -8,6 +8,9 @@ const searchEndDate = document.querySelector(".search__endDate");
 const searchRegion = document.querySelector("#search__region");
 const curUser = document.getElementById('curUserID');
 
+searchStartDate.value= new Date(new Date().setMonth(new Date().getMonth() - 2)).toISOString().substring(0,10);
+searchEndDate.value = new Date().toISOString().substring(0,10);
+
 const searchKeywordHandler = (event) => {
 	let title = searchTitle.value;
 	
