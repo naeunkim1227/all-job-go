@@ -4,11 +4,13 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 import java.util.List;
 import java.util.Map;
+import java.util.Vector;
 
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -22,6 +24,7 @@ import com.web.alljobgo.calendar.domain.HrdSearchVO;
 import com.web.alljobgo.calendar.domain.FavoriteVO;
 import com.web.alljobgo.calendar.service.CalendarService;
 import com.web.alljobgo.train.domain.SearchVO;
+import com.web.alljobgo.user.domain.userVO;
 
 @Controller
 @RequestMapping("/calendar/*")
@@ -45,17 +48,16 @@ public class CalendarController {
 	
 	@RequestMapping(value = "/seecalendar",method = RequestMethod.GET)
 	public String getAPI(Model model,HttpServletRequest request,@ModelAttribute("hvo") HrdSearchVO hvo) throws Exception {
+		
+		
 		HttpSession session = request.getSession();
 		String id = "admin";
 		session.setAttribute("id", id);
 		
-		System.out.println(session.getAttribute(id));
-		System.out.println("id의 문제?" + id);
+		Vector totallist =  service.getapi(id);
 		
-		List allfavlist =  service.getapi(id);
-		
-		model.addAttribute("allfavlist", allfavlist);
-		
+		model.addAttribute("classlist", totallist.get(0));
+		model.addAttribute("academylist", totallist.get(1));
 		
 		return "calendar/seecalendar";
 	}

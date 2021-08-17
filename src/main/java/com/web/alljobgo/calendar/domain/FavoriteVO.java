@@ -2,12 +2,10 @@ package com.web.alljobgo.calendar.domain;
 
 public class FavoriteVO {
 	private int class_Num;
-	private int academy_Num;
 	private String id;
-	private String fav_class;
-	private String fav_academy;
-	private String fav_classNum;
-	private String fav_academyNum;
+	private String fav_classId;
+	private String fav_classDegr;
+	private String fav_academyId;
 	
 	public int getClass_Num() {
 		return class_Num;
@@ -21,40 +19,24 @@ public class FavoriteVO {
 	public void setId(String id) {
 		this.id = id;
 	}
-	public String getFav_class() {
-		return fav_class;
+	public String getFav_classId() {
+		return fav_classId;
 	}
-	public void setFav_class(String fav_class) {
-		this.fav_class = fav_class;
+	public void setFav_classId(String fav_classId) {
+		this.fav_classId = fav_classId;
 	}
-	public int getAcademy_Num() {
-		return academy_Num;
+
+	public String getFav_classDegr() {
+		return fav_classDegr;
 	}
-	public void setAcademy_Num(int academy_Num) {
-		this.academy_Num = academy_Num;
+	public void setFav_classDegr(String fav_classDegr) {
+		this.fav_classDegr = fav_classDegr;
 	}
-	public String getFav_academy() {
-		return fav_academy;
+	public String getFav_academyId() {
+		return fav_academyId;
 	}
-	public void setFav_academy(String fav_academy) {
-		this.fav_academy = fav_academy;
-	}
-	
-	public String getFav_classNum() {
-		return fav_classNum;
-	}
-	public void setFav_classNum(String fav_classNum) {
-		this.fav_classNum = fav_classNum;
-	}
-	public String getFav_academyNum() {
-		return fav_academyNum;
-	}
-	public void setFav_academyNum(String fav_academyNum) {
-		this.fav_academyNum = fav_academyNum;
-	}
-	@Override
-	public String toString() {
-		return "FavoriteVO [class_Num=" + class_Num + ", id=" + id + ", fav_class=" + fav_class + "]";
+	public void setFav_academyId(String fav_academyId) {
+		this.fav_academyId = fav_academyId;
 	}
 	
 	
