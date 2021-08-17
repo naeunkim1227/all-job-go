@@ -4,7 +4,8 @@
 	margin:auto; 
 	width: 70%;
 	margin-bottom: 5%;
-/* border: 1px solid red; */
+/* 	border: 1px solid red; */
+	height: 100%;
 
 	
 }
@@ -17,11 +18,11 @@
 
 section {
 	box-sizing:border-box;
-/* 	border: 1px solid olive; */
+	border: 1px solid white;
 	width: 35%;
 	display: inline-block;
 	float: left;
-	height: 550px;
+	height: 100%;
 }
 
 
@@ -35,5 +36,22 @@ section {
 	float: left;
 	margin-right: 5px;
 }
+
+#login{
+	text-align: center;	
+}
+
+#loginB1 {width: 30.8%; height: 20px;}
+#loginB2 {width: 40%; height: 20px;}
+
+#login_sign{margin-top: 10px;
+			text-align: center;}
+
+
+#userinfor1{width:40%;}
+
+
+
+
 
 
