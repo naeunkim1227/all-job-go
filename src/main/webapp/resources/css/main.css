@@ -10,6 +10,11 @@
 	font-family: "Gowun Dodum", sans-serif
 }
 
+a{
+	text-decoration: none;
+	color: inherit;
+}
+
 html, body {
 	height: 100%;
 	width: 100%;

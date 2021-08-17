@@ -44,7 +44,7 @@
 				</select>
 				<input class="searchInput search__title" type="text"
 					placeholder="찾을 훈련을 검색해주세요." />
-				<button class="search__btn" type="submit">검색</button>
+				<button class="search__btn" type="submit"><i class="fas fa-search"></i></button>
 			</form>
 			<div id="search-result-container" class="search-result__container"></div>
 		</main>
