@@ -1,0 +1,41 @@
+@charset "UTF-8";
+
+* {
+	margin: 0;
+	text-decoration: none;
+	
+}
+
+.container {
+	display: flex;
+	margin: 5% 2% 5% 2%;
+	}
+	
+
+#cal_set{
+	width: 80%;
+	margin: 0 2% 0 2%;
+	
+}
+
+#table {
+	text-align: center;
+}
+
+#table1,#table2 {
+	margin-bottom: 5%;
+	border: 0.5px dashed gray;
+	padding: 3%;
+	
+}
+
+
+#title {
+	font-size: 20px;	
+}
+
+
+#subtitle {
+	width: 60%;
+	
+}

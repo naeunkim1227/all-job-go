@@ -47,14 +47,17 @@ public class CalendarController {
 
 	
 	@RequestMapping(value = "/seecalendar",method = RequestMethod.GET)
-	public String getAPI(Model model,HttpServletRequest request,@ModelAttribute("hvo") HrdSearchVO hvo) throws Exception {
+	public String getAPI(Model model,HttpServletRequest request,@ModelAttribute("hvo") HrdSearchVO hvo,Authentication auth) throws Exception {
+		
+		if(auth == null) {
+			return "member/login";
+		}
+		
+		userVO id = (userVO)auth.getPrincipal();
 		
 		
-		HttpSession session = request.getSession();
-		String id = "admin";
-		session.setAttribute("id", id);
 		
-		Vector totallist =  service.getapi(id);
+		Vector totallist =  service.getapi(id.getId());
 		
 		model.addAttribute("classlist", totallist.get(0));
 		model.addAttribute("academylist", totallist.get(1));
