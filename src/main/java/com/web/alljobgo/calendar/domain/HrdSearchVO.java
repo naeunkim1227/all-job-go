@@ -3,7 +3,7 @@ package com.web.alljobgo.calendar.domain;
 import javax.xml.bind.annotation.XmlRootElement;
 
 
-@XmlRootElement(name="items")
+@XmlRootElement(name="scn_list")
 public class HrdSearchVO {
 	
 	private String trprId;
