@@ -22,8 +22,7 @@
 
 	<div class="main-layout">
 
-
-		<jsp:include page="layout/header.jsp"></jsp:include>
+	<%@include file ="layout/header.jsp"%>
 
 		<article>
 			<div id="title">
