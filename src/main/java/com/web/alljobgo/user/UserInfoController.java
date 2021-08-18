@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.web.alljobgo.object.ResultType;
 import com.web.alljobgo.train.TrainSearchController;
@@ -29,6 +30,12 @@ private static final Logger logger = LoggerFactory.getLogger(TrainSearchControll
 	public String getLogin() {
 		logger.info("getLogin");
 		return "member/login";
+	}
+	
+	@GetMapping(value = "/login/fail")
+	public String getLoginFail(RedirectAttributes rttr) {
+		rttr.addFlashAttribute("fail","아이디 또는 비밀번호가 알맞지 않습니다!");
+		return "redirect:/user/login";
 	}
 
 	@GetMapping(value = "/signup")

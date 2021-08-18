@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,6 +9,7 @@
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/resources/css/main.css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/sign.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/login.css">
 </head>
 <body>
 	<article class="main-layout">
@@ -19,6 +21,9 @@
 			<h1 id="signup">로그인</h1>
 
 			<div>
+				<c:if test="${not empty fail}">
+					<div class="login-fail__msg">${fail}</div>
+				</c:if>
 				<form method="post">
 					<div id="login">
 						<input type="text" name="id" id="id" placeholder="이메일"><br>
