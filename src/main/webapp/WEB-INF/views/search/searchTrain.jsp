@@ -16,7 +16,6 @@
 </head>
 <body>
 	<article class="main-layout">
-		<%@ include file="../layout/header.jsp"%>
 		<main>
 			<form id="searchBox-form">
 				<input class="searchInput search__startDate" type="date" />
@@ -48,7 +47,6 @@
 			</form>
 			<div id="search-result-container" class="search-result__container"></div>
 		</main>
-		<%@ include file="../layout/footer.jsp"%>
 	</article>
 	<script> let ee = "${user_nameT}" </script>
 	<script type="module" src="${pageContext.request.contextPath }/resources/js/search/trainSearch.js"></script>

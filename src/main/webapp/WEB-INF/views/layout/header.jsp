@@ -16,7 +16,7 @@
 		<div id="top">
 			<ul>
 				<li><a href="${root}/main">all-job-go</a></li>
-				<li><a href="${root}/search">훈련검색</a></li>
+				<li><a href="${root}/calendar/seecalendar">캘린더로 보기</a></li>
 				<sec:authorize access="hasRole('ANONYMOUS')">
 					<li><a href="${root}/user/login">로그인</a></li>
 					<li><a href="${root}/user/signup">회원가입</a></li>
