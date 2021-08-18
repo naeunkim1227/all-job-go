@@ -37,14 +37,14 @@
 	$(function(){
 		var $window = $(window);
 		
-		
 		$window.on('scroll',function(){
 			
 			$('#top').css("background-color","rgba(35,60,144,0.9)");
 			$('#top').css("color","white");
-			
+			if(window.scrollY === 0){
+				$('#top').css("background-color","rgba(1,1,1,0)");
+				$('#top').css("color","black");
+			}
 		});
-		
 	});
-
 </script>

@@ -47,7 +47,7 @@ header>div {
 	top: 0;
 	display: table;
 	font-size: 20px;
-	
+	z-index:5;
 }
 
 #top > div {
@@ -117,6 +117,9 @@ footer {
 #search_main {
 	background-color:  #FCFCFC;
 	width: 1000px;
+	min-height:200px;
+	max-height:700px;
+	overflow:auto;
 	margin-left: 25%;
 	position: relative;
 	top: -40px;
