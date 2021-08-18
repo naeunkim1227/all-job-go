@@ -35,13 +35,14 @@
 
 <script>
 	$(function(){
-		var nav = document.getElementById('nav');
 		var $window = $(window);
 		
 		
 		$window.on('scroll',function(){
 			
-			$('#top').css("background-color","rgba(230,230,230,0.9)");
+			$('#top').css("background-color","rgba(35,60,144,0.9)");
+			$('#top').css("color","white");
+			
 		});
 		
 	});
