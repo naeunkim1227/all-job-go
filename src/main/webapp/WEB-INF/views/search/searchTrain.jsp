@@ -1,22 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>훈련 검색</title>
-<link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/main.css">
-<link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/search.css">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-<sec:authorize access="isAuthenticated()">
-	<sec:authentication property="principal.id" var="id" />
-	<meta id="curUserID" content="${id}">
-</sec:authorize>
-</head>
-<body>
-	<article class="main-layout">
-		<main>
+		<main class="searchBox-container">
 			<form id="searchBox-form">
 				<input class="searchInput search__startDate" type="date" />
 				<img style="width: 35px;" src="https://img.icons8.com/emoji/48/000000/wavy-dash-emoji.png"/>
@@ -47,8 +31,3 @@
 			</form>
 			<div id="search-result-container" class="search-result__container"></div>
 		</main>
-	</article>
-	<script> let ee = "${user_nameT}" </script>
-	<script type="module" src="${pageContext.request.contextPath }/resources/js/search/trainSearch.js"></script>
-</body>
-</html>

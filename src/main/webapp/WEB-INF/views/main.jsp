@@ -1,10 +1,18 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>AllJobGo</title>
+<link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/main.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/search.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+<sec:authorize access="isAuthenticated()">
+	<sec:authentication property="principal.id" var="id" />
+	<meta id="curUserID" content="${id}">
+</sec:authorize>
 </head>
 <link rel="stylesheet" href="resources/css/main.css">
 <script
@@ -70,7 +78,7 @@
 			<div id="example_section">
 				<div id="img_section">
 					<img
-						src="${pageContext.request.contextPath}/resources/img/calendar_ex.png"
+						src="${pageContext.request.contextPath}/resources/img/search_about.png"
 						id="cal_img">
 				</div>
 				<div id="cal_txt">
@@ -79,7 +87,8 @@
 					<div id="sec_content">
 						<h1>SEARCH</h1>
 						<h3>과정을 검색해 볼 수 있어요.</h3>
-						<h4>알아서 쓰고 싶은말 적으셈</h4>
+						<h4>훈련 기간을 정해서 과정을 알아볼 수 있어요! 만약 과정을 신청하고 
+						싶다거나 관심이 있다면 찜버튼을 클릭해서 캘린더에서 확인할 수 있어요.</h4>
 					</div>
 				</div>
 
@@ -92,7 +101,7 @@
 					<div id="sec_content">
 						<h1>REVIEW</h1>
 						<h3>리뷰를 볼 수 있어요</h3>
-						<h4>알아서 적을 말 쓰세요</h4>
+						<h4>확인하고 싶은 과정의 수강후기를 쉽게 확인할 수 있습니다.</h4>
 					</div>
 				</div>
 				<div>
@@ -107,5 +116,7 @@
 
 		<jsp:include page="layout/footer.jsp"></jsp:include>
 	</div>
+	<script> let ee = "${user_nameT}" </script>
+	<script type="module" src="${pageContext.request.contextPath }/resources/js/search/trainSearch.js"></script>
 </body>
 </html>
