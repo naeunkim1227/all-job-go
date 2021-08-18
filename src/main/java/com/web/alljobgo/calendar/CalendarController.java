@@ -2,12 +2,14 @@ package com.web.alljobgo.calendar;
 
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.request;
 
+import java.io.PrintWriter;
 import java.util.List;
 import java.util.Map;
 import java.util.Vector;
 
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.security.core.Authentication;
@@ -47,21 +49,25 @@ public class CalendarController {
 
 	
 	@RequestMapping(value = "/seecalendar",method = RequestMethod.GET)
-	public String getAPI(Model model,HttpServletRequest request,@ModelAttribute("hvo") HrdSearchVO hvo,Authentication auth) throws Exception {
+	public String getAPI(Model model,HttpServletRequest request,@ModelAttribute("hvo") HrdSearchVO hvo,Authentication auth,HttpServletResponse response) throws Exception {
 		
 		if(auth == null) {
+			 response.setContentType("text/html; charset=UTF-8");
+	            PrintWriter out = response.getWriter();
+	            out.println("<script>alert('로그인이 필요합니다.');</script>");
+	            out.flush();
 			return "member/login";
 		}
 		
 		userVO id = (userVO)auth.getPrincipal();
 		
-		
-		
 		Vector totallist =  service.getapi(id.getId());
 		
+		if(totallist.size() != 0){
 		model.addAttribute("classlist", totallist.get(0));
 		model.addAttribute("academylist", totallist.get(1));
-		
+		}
+
 		return "calendar/seecalendar";
 	}
 	
