@@ -19,9 +19,9 @@ public class HomeController {
 	
 	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
 	
-	@RequestMapping(value={"","/","/main"})
+	@RequestMapping(value="/main")
 	public void main(Authentication auth) {
-		//logger.info("main controller");
+		logger.info("main controller");
 		
 		if(auth != null) {
 			logger.info("로그인 유저 정보 ==>", auth.getPrincipal().toString());
